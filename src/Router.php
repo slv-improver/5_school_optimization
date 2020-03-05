@@ -2,8 +2,10 @@
 
 namespace App\src;
 
-use App\src\controller\UserController;
-use App\src\controller\ErrorController;
+use App\src\controller\{
+	UserController,
+	ErrorController
+};
 use App\config\Request;
 use Exception;
 
@@ -24,11 +26,12 @@ class Router
 	public function run()
 	{
 		$route = $this->request->getGet()->get('route');
+		$post = $this->request->getPost();
 		try {
 			if (isset($route)) {
 				switch ($route) {
 					case 'login':
-						$this->userController->login();
+						$this->userController->login($post);
 						break;
 
 					default:
@@ -38,7 +41,7 @@ class Router
 				}
 			// by default
 			} else {
-				$this->userController->login();
+				$this->userController->login($post);
 			}
 		} catch (Exception $e) {
 			// redirect to error_500.php
