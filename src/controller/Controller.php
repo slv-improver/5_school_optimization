@@ -2,6 +2,7 @@
 
 namespace App\src\controller;
 
+use App\src\DAO\UserDAO;
 use App\config\Request;
 use App\src\model\View;
 
@@ -12,6 +13,7 @@ use App\src\model\View;
  */
 abstract class Controller
 {
+	protected $userDAO;
 	protected $request;
 	protected $get;
 	protected $post;
@@ -20,6 +22,7 @@ abstract class Controller
 
 	public function __construct()
 	{
+		$this->userDAO = new UserDAO();
 		$this->request = new Request(); /* for $_GET, $_POST and $_SESSION */
 		$this->get = $this->request->getGet();
 		$this->post = $this->request->getPost();
