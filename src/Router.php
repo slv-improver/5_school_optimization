@@ -2,6 +2,7 @@
 
 namespace App\src;
 
+use App\src\controller\UserController;
 use App\src\controller\ErrorController;
 use App\config\Request;
 use Exception;
@@ -9,13 +10,15 @@ use Exception;
 class Router
 {
 	
+	private $userController;
 	private $errorController;
 	private $request;
 
 	public function __construct()
 	{
-		$this->request = new Request(); /* for $_GET, $_POST and $_SESSION */
+		$this->userController = new UserController();
 		$this->errorController = new ErrorController();
+		$this->request = new Request(); /* for $_GET, $_POST and $_SESSION */
 	}
 
 	public function run()
@@ -24,6 +27,9 @@ class Router
 		try {
 			if (isset($route)) {
 				switch ($route) {
+					case 'login':
+						$this->userController->login();
+						break;
 
 					default:
 					// if route value is not defined redirect to error_404.php
@@ -32,7 +38,7 @@ class Router
 				}
 			// by default
 			} else {
-				
+				$this->userController->login();
 			}
 		} catch (Exception $e) {
 			// redirect to error_500.php
