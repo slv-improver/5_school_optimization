@@ -2,6 +2,8 @@
 
 namespace App\src\controller;
 
+use App\config\Parameter;
+
 class ChildController extends Controller
 {
 	public function listChildren()
@@ -12,5 +14,10 @@ class ChildController extends Controller
 				'children' => $children
 				]);
 		}
+	}
+
+	public function addChild()
+	{
+		return $this->view->render('register');
 	}
 }
