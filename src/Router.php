@@ -42,7 +42,7 @@ class Router
 						$this->childController->listChildren();
 						break;
 					case 'addChild':
-						$this->childController->addChild();
+						$this->childController->addChild($post);
 						break;
 
 					default:
