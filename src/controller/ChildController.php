@@ -26,4 +26,11 @@ class ChildController extends Controller
 		}
 		return $this->view->render('register');
 	}
+	
+	public function deleteChild($childId)
+	{
+		$this->childDAO->deleteChild($childId);
+		header('Location: index.php?route=listChildren');
+		exit;
+	}
 }
