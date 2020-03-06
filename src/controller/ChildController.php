@@ -7,5 +7,8 @@ class ChildController extends Controller
 	public function listChildren()
 	{
 		$children = $this->childDAO->listChildren();
+		return $this->view->render('home', [
+			'children' => $children
+		]);
 	}
 }
