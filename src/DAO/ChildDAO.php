@@ -31,4 +31,10 @@ class ChildDAO extends DAO
 			$post->get('birth_date')
 		]);
 	}
+
+	public function deleteChild($childId)
+	{
+		$sql = 'DELETE FROM child WHERE id = ?';
+		return $this->createQuery($sql, [$childId]);
+	}
 }
