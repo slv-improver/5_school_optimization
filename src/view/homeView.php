@@ -6,7 +6,10 @@ $title = 'Enfants de l\'école'; ?>
 
 <p>Liste des enfants :</p>
 
-<p><?= $this->session->show('add_child') ?></p>
+<p>
+	<?= $this->session->show('add_child') ?>
+	<?= $this->session->show('delete_child') ?>
+</p>
 
 <table>
 	<thead>
@@ -40,6 +43,9 @@ $title = 'Enfants de l\'école'; ?>
 					<?php $diff = $child->getBirthDate()->diff(new DateTime());
 					echo "$diff->y ans $diff->m mois $diff->d jours";
 					?>
+				</td>
+				<td>
+					<a href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>">Supprimer</a>
 				</td>
 			</tr>
 		<?php endforeach; ?>
