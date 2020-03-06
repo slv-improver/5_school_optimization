@@ -41,6 +41,9 @@ $title = 'Enfants de l\'école'; ?>
 					echo "$diff->y ans $diff->m mois $diff->d jours";
 					?>
 				</td>
+				<td>
+					<a href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>">Supprimer</a>
+				</td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
