@@ -32,4 +32,12 @@ class UserController extends Controller
 		}
 		return $this->view->render('login');
 	}
+
+	public function logout()
+	{
+		$this->session->stop();
+		$this->session->start();
+		header('Location: index.php');
+		exit;
+	}
 }
