@@ -3,6 +3,7 @@
 namespace App\src;
 
 use App\src\controller\{
+	ChildController,
 	UserController,
 	ErrorController
 };
@@ -18,6 +19,7 @@ class Router
 
 	public function __construct()
 	{
+		$this->childController = new ChildController();
 		$this->userController = new UserController();
 		$this->errorController = new ErrorController();
 		$this->request = new Request(); /* for $_GET, $_POST and $_SESSION */
@@ -32,6 +34,9 @@ class Router
 				switch ($route) {
 					case 'login':
 						$this->userController->login($post);
+						break;
+					case 'listChildren':
+						$this->childController->listChildren();
 						break;
 
 					default:
