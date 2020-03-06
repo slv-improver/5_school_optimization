@@ -41,6 +41,9 @@ class Router
 					case 'listChildren':
 						$this->childController->listChildren();
 						break;
+					case 'addChild':
+						$this->childController->addChild($post);
+						break;
 
 					default:
 					// if route value is not defined redirect to error_404.php

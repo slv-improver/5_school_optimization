@@ -6,6 +6,8 @@ $title = 'Enfants de l\'école'; ?>
 
 <p>Liste des enfants :</p>
 
+<p><?= $this->session->get('add_child') ?></p>
+
 <table>
 	<thead>
 		<tr>
@@ -17,25 +19,29 @@ $title = 'Enfants de l\'école'; ?>
 	</thead>
 
 	<tbody>
-		<?php foreach ($children as $childArray) : 
+		<tr>
+			<td colspan="4"></td>
+			<td><a href="index.php?route=addChild">Ajouter</a></td>
+		</tr>
+		<?php foreach ($children as $childArray) :
 			$child = new Child($childArray);
 		?>
-		<tr>
-			<td class="left">
-				<?= strtoupper($child->getLastName()) ?>
-			</td>
-			<td class="right">
-				<?= ucfirst($child->getFirstName()) ?>
-			</td>
-			<td class="center">
-				<?= $child->getBirthDate()->format('d . m . Y'); ?>
-			</td>
-			<td>
-				<?php $diff = $child->getBirthDate()->diff(new DateTime());
-				echo "$diff->y ans $diff->m mois $diff->d jours";
-				?>
-			</td>
-		</tr>
+			<tr>
+				<td class="left">
+					<?= strtoupper($child->getLastName()) ?>
+				</td>
+				<td class="right">
+					<?= ucfirst($child->getFirstName()) ?>
+				</td>
+				<td class="center">
+					<?= $child->getBirthDate()->format('d . m . Y'); ?>
+				</td>
+				<td>
+					<?php $diff = $child->getBirthDate()->diff(new DateTime());
+					echo "$diff->y ans $diff->m mois $diff->d jours";
+					?>
+				</td>
+			</tr>
 		<?php endforeach; ?>
 	</tbody>
 </table>

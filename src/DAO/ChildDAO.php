@@ -2,8 +2,10 @@
 
 namespace App\src\DAO;
 
+use App\config\Parameter;
+
 class ChildDAO extends DAO
-{	
+{
 	/**
 	 * listChildren
 	 *
@@ -17,5 +19,16 @@ class ChildDAO extends DAO
 		$children = $result->fetchAll();
 		$result->closeCursor();
 		return $children;
+	}
+
+	public function addChild(Parameter $post)
+	{
+		$sql = 'INSERT INTO child (last_name, first_name, birth_date) 
+			VALUES (?, ?, ?)';
+		return $this->createQuery($sql, [
+			$post->get('last_name'), 
+			$post->get('first_name'), 
+			$post->get('birth_date')
+		]);
 	}
 }
