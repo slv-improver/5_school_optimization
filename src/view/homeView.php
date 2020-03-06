@@ -6,7 +6,7 @@ $title = 'Enfants de l\'école'; ?>
 
 <p>Liste des enfants :</p>
 
-<p><?= $this->session->get('add_child') ?></p>
+<p><?= $this->session->show('add_child') ?></p>
 
 <table>
 	<thead>
