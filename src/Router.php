@@ -29,6 +29,7 @@ class Router
 	{
 		$route = $this->request->getGet()->get('route');
 		$post = $this->request->getPost();
+		$get = $this->request->getGet();
 		try {
 			if (isset($route)) {
 				switch ($route) {
@@ -43,6 +44,9 @@ class Router
 						break;
 					case 'addChild':
 						$this->childController->addChild($post);
+						break;
+					case 'deleteChild':
+						$this->childController->deleteChild($get->get('childId'));
 						break;
 
 					default:
