@@ -34,4 +34,16 @@ abstract class Controller
 		$this->session = $this->request->getSession();
 		$this->view = new View();
 	}
+
+	/* for actions that require verification */
+	protected function checkLoggedIn()
+	{
+		if (!$this->session->get('login')) {
+			$this->session->set('need_login', 'Vous devez vous connecter pour accéder à cette page');
+			header('Location: index.php?route=login');
+		} else {
+			return true;
+		}
+	}
+
 }
