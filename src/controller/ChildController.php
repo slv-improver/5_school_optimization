@@ -16,8 +16,14 @@ class ChildController extends Controller
 		}
 	}
 
-	public function addChild()
+	public function addChild(Parameter $post)
 	{
+		if ($post->get('submit')) {
+			$this->childDAO->addChild($post);
+			$this->session->set('add_child', 'Le nouvel enfant a bien été ajouté');
+			header('Location: index.php?route=listChildren');
+			exit;
+		}
 		return $this->view->render('register');
 	}
 }
