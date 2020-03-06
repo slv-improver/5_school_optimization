@@ -26,7 +26,7 @@ class View
 	 */
 	public function render($template, $data = [])
 	{
-		$this->file = '../src/view/' . $template . '.php';
+		$this->file = '../src/view/' . $template . 'View.php';
 		$content  = $this->renderFile($this->file, $data);
 		$view = $this->renderFile('../src/view/base.php', [
 			'title' => $this->title,
