@@ -35,6 +35,9 @@ class Router
 					case 'login':
 						$this->userController->login($post);
 						break;
+					case 'logout':
+						$this->userController->logout();
+						break;
 					case 'listChildren':
 						$this->childController->listChildren();
 						break;
