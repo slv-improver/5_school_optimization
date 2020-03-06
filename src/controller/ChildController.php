@@ -30,6 +30,7 @@ class ChildController extends Controller
 	public function deleteChild($childId)
 	{
 		$this->childDAO->deleteChild($childId);
+		$this->session->set('delete_child', 'L\'enfant a bien été supprimé');
 		header('Location: index.php?route=listChildren');
 		exit;
 	}
