@@ -4,7 +4,7 @@ use App\src\model\Child;
 
 $title = 'Enfants de l\'école'; ?>
 
-<p>Liste des enfants :</p>
+<p>Liste des <?= count($children) ?> enfants :</p>
 
 <p>
 	<?= $this->session->show('add_child') ?>
@@ -13,23 +13,25 @@ $title = 'Enfants de l\'école'; ?>
 
 <table>
 	<thead>
-		<tr>
+		<tr align="center">
+			<th>N°</th>
 			<th>Nom</th>
 			<th>Prenom</th>
 			<th>Date de naissance</th>
 			<th>Age</th>
+			<td><a href="index.php?route=addChild">Ajouter</a></td>
 		</tr>
 	</thead>
 
 	<tbody>
-		<tr>
-			<td colspan="4"></td>
-			<td><a href="index.php?route=addChild">Ajouter</a></td>
-		</tr>
-		<?php foreach ($children as $childArray) :
+		<?php
+		$count = 0;
+		foreach ($children as $childArray) :
 			$child = new Child($childArray);
+			$count++;
 		?>
 			<tr>
+				<td> <?= $count ?> </td>
 				<td class="left">
 					<?= strtoupper($child->getLastName()) ?>
 				</td>
@@ -44,7 +46,7 @@ $title = 'Enfants de l\'école'; ?>
 					echo "$diff->y ans $diff->m mois $diff->d jours";
 					?>
 				</td>
-				<td>
+				<td align="center">
 					<a href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>">Supprimer</a>
 				</td>
 			</tr>
