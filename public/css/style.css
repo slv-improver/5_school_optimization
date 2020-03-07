@@ -7,3 +7,14 @@ label {
 	width: 150px;
 	float: left;
 }
+
+table {
+	margin: auto;
+}
+tbody tr:nth-child(odd) {
+	background: rgba(98, 180, 193, 0.251);
+}
+td, th {
+	padding: 5px 10px;
+	border: 1px black outset;
+}

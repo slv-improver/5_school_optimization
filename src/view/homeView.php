@@ -13,7 +13,7 @@ $title = 'Enfants de l\'école'; ?>
 
 <table>
 	<thead>
-		<tr>
+		<tr align="center">
 			<th>N°</th>
 			<th>Nom</th>
 			<th>Prenom</th>
@@ -46,7 +46,7 @@ $title = 'Enfants de l\'école'; ?>
 					echo "$diff->y ans $diff->m mois $diff->d jours";
 					?>
 				</td>
-				<td>
+				<td align="center">
 					<a href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>">Supprimer</a>
 				</td>
 			</tr>
