@@ -4,7 +4,7 @@ use App\src\model\Child;
 
 $title = 'Enfants de l\'école'; ?>
 
-<p>Liste des enfants :</p>
+<p>Liste des <?= count($children) ?> enfants :</p>
 
 <p>
 	<?= $this->session->show('add_child') ?>
