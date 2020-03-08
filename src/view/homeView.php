@@ -44,6 +44,9 @@
 				<td align="center">
 					<a href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>">Supprimer</a>
 				</td>
+				<td>
+					<a href="index.php?route=childCard&amp;childId=<?= $child->getId() ?>">Accéder à la fiche</a>
+				</td>
 			</tr>
 		<?php endforeach; ?>
 	</tbody>
