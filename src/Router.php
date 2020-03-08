@@ -48,6 +48,9 @@ class Router
 					case 'deleteChild':
 						$this->childController->deleteChild($get->get('childId'));
 						break;
+					case 'childCard':
+						$this->childController->childCard($get->get('childId'));
+						break;
 
 					default:
 					// if route value is not defined redirect to error_404.php
