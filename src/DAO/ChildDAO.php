@@ -37,4 +37,14 @@ class ChildDAO extends DAO
 		$sql = 'DELETE FROM child WHERE id = ?';
 		return $this->createQuery($sql, [$childId]);
 	}
+
+	public function childCard($childId)
+	{
+		$sql = 'SELECT id, last_name lastName, first_name firstName, birth_date birthDate
+			FROM child WHERE id = ?';
+		$result = $this->createQuery($sql, [$childId]);
+		$child = $result->fetch();
+		$result->closeCursor();
+		return $child;
+	}
 }
