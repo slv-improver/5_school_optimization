@@ -39,5 +39,19 @@ class ChildController extends Controller
 		$this->session->set('delete_child', 'L\'enfant a bien été supprimé');
 		header('Location: index.php?route=listChildren');
 		exit;
+	}	
+	/**
+	 * childCard 
+	 *
+	 * @param  mixed $childId
+	 * @return ChildObject $child
+	 */
+	public function childCard($childId)
+	{
+		$childArray = $this->childDAO->childCard($childId);
+		$child = new Child($childArray);
+		return $this->view->render('card', [
+			'child' => $child
+		]);
 	}
 }
