@@ -1,8 +1,4 @@
-<?php
-
-use App\src\model\Child;
-
-$title = 'Enfants de l\'école'; ?>
+<?php $title = 'Enfants de l\'école'; ?>
 
 <p>Liste des <?= count($children) ?> enfants :</p>
 
@@ -26,8 +22,7 @@ $title = 'Enfants de l\'école'; ?>
 	<tbody>
 		<?php
 		$count = 0;
-		foreach ($children as $childArray) :
-			$child = new Child($childArray);
+		foreach ($children as $child) :
 			$count++;
 		?>
 			<tr>

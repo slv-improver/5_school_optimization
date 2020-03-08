@@ -3,13 +3,19 @@
 namespace App\src\controller;
 
 use App\config\Parameter;
+use App\src\model\Child;
 
 class ChildController extends Controller
 {
 	public function listChildren()
 	{
 		if ($this->checkLoggedIn()) {
-			$children = $this->childDAO->listChildren();
+			$childrenArray = $this->childDAO->listChildren();
+			$children = [];
+			foreach ($childrenArray as $childArray) {
+				$child = new Child($childArray);
+				$children[] = $child;
+			}
 			return $this->view->render('home', [
 				'children' => $children
 				]);
