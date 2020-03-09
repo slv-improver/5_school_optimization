@@ -47,4 +47,39 @@ class ChildDAO extends DAO
 		$result->closeCursor();
 		return $child;
 	}
+		
+	/**
+	 * getParents of child 
+	 *
+	 * @param  mixed $childId
+	 * @return array $parents
+	 */
+	public function getParents($childId)
+	{
+		$sql = 'SELECT p.rank, p.last_name lastName, p.first_name firstName, p.phone, p.mail 
+			FROM child c LEFT JOIN parent p ON father_id = p.id || mother_id = p.id WHERE c.id = ?';
+		$result = $this->createQuery($sql, [$childId]);
+		$parents = $result->fetchAll();
+		$result->closeCursor();
+		return $parents;
+	}
+	/* 
+	public function getFather($childId)
+	{
+		$sql = 'SELECT p.id, p.rank, p.last_name lastName, p.first_name firstName, p.phone, p.mail 
+			FROM child c LEFT JOIN parent p ON father_id = p.id WHERE c.id = ?';
+		$result = $this->createQuery($sql, [$childId]);
+		$father = $result->fetch();
+		$result->closeCursor();
+		return $father;
+	}
+	public function getMother($childId)
+	{
+		$sql = 'SELECT p.id, p.rank, p.last_name lastName, p.first_name firstName, p.phone, p.mail 
+			FROM child c LEFT JOIN parent p ON mother_id = p.id WHERE c.id = ?';
+		$result = $this->createQuery($sql, [$childId]);
+		$mother = $result->fetch();
+		$result->closeCursor();
+		return $mother;
+	} */
 }
