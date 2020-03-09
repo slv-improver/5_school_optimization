@@ -2,16 +2,14 @@
 
 namespace App\src\model;
 
-use DateTime;
-
-class Child
+class ParentOfChild
 {
 	private $id;
+	private $rank;
 	private $lastName;
 	private $firstName;
-	private $birthDate;
-	private $father;
-	private $mother;
+	private $phone;
+	private $mail;
 
 	public function __construct(array $data)
 	{
@@ -28,7 +26,7 @@ class Child
 		}
 	}
 
-	public function setId(string $value)
+	public function setId($value)
 	{
 		$this->id = htmlspecialchars($value);
 	}
@@ -37,7 +35,23 @@ class Child
 		return $this->id;
 	}
 
-	public function setLastName(string $value)
+	public function setRank($value)
+	{
+		if ($value === 'father' || $value === 'mother') {
+			$this->rank = $value;
+		}
+	}
+	public function getRank()
+	{
+		if ($this->rank === 'father') {
+			return 'père';
+		}
+		if ($this->rank === 'mother') {
+			return 'mère';
+		}
+	}
+
+	public function setLastName($value)
 	{
 		$this->lastName = htmlspecialchars($value);
 	}
@@ -46,7 +60,7 @@ class Child
 		return $this->lastName;
 	}
 
-	public function setFirstName(string $value)
+	public function setFirstName($value)
 	{
 		$this->firstName = htmlspecialchars($value);
 	}
@@ -55,30 +69,21 @@ class Child
 		return $this->firstName;
 	}
 
-	public function setBirthDate(string $value)
+	public function setPhone($value)
 	{
-		$this->birthDate = new DateTime($value);
+		$this->phone = htmlspecialchars($value);
 	}
-	public function getBirthDate()
+	public function getPhone()
 	{
-		return $this->birthDate;
-	}
-	
-	public function setFather(array $value)
-	{
-		$this->father = new ParentOfChild($value);
-	}
-	public function getFather()
-	{
-		return $this->father;
+		return $this->phone;
 	}
 
-	public function setMother(array $value)
+	public function setMail($value)
 	{
-		$this->mother = new ParentOfChild($value);
+		$this->mail = htmlspecialchars($value);
 	}
-	public function getMother()
+	public function getMail()
 	{
-		return $this->mother;
+		return $this->mail;
 	}
 }

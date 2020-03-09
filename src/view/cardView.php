@@ -4,21 +4,44 @@ $lastName = strtoupper($child->getLastName());
 $firstName = ucfirst($child->getFirstName());
 $birthDate = $child->getBirthDate();
 $diff = $child->getBirthDate()->diff(new DateTime());
+$father = $child->getFather();
+$mother = $child->getMother();
 ?>
 
 <h2 align='center'><?= $lastName ?> <?= $firstName ?></h2>
 <p>
-	né le <?= $birthDate->format('d/m/Y') ?><br>
+	le <?= $birthDate->format('d/m/Y') ?><br>
 	<?= $diff->y ?> ans <?= $diff->m ?> mois <?= $diff->d ?> jours
 </p>
 
-<section>
+<section class="info">
 	<h2 align='center'>Informations Administratives</h2>
 
 	<p>Adresse : </p>
 
-	<p>Pere : </p>
-	<p>Mere : </p>
+	<table class="parent">
+		<tr>
+			<th></th>
+			<th>NOM</th>
+			<th>Prenom</th>
+			<th>Telephone</th>
+			<th>Mail</th>
+		</tr>
+		<tr>
+			<td><?= isset($father) ? ucfirst($father->getRank()) : '' ?></td>
+			<td><?= isset($father) ? strtoupper($father->getLastName()) : '' ?></td>
+			<td><?= isset($father) ? ucfirst($father->getFirstName()) : '' ?></td>
+			<td><?= isset($father) ? $father->getPhone() : '' ?></td>
+			<td><?= isset($father) ? $father->getMail() : '' ?></td>
+		</tr>
+		<tr>
+			<td><?= isset($mother) ? ucfirst($mother->getRank()) : '' ?></td>
+			<td><?= isset($mother) ? strtoupper($mother->getLastName()) : '' ?></td>
+			<td><?= isset($mother) ? ucfirst($mother->getFirstName()) : '' ?></td>
+			<td><?= isset($mother) ? $mother->getPhone() : '' ?></td>
+			<td><?= isset($mother) ? $mother->getMail() : '' ?></td>
+		</tr>
+	</table>
 
 	<h3>Personnes autorisees a recuperer l'enfant</h3>
 
