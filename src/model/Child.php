@@ -7,6 +7,7 @@ use DateTime;
 class Child
 {
 	private $id;
+	private $gender;
 	private $lastName;
 	private $firstName;
 	private $birthDate;
@@ -33,6 +34,15 @@ class Child
 	public function getId()
 	{
 		return $this->id;
+	}
+
+	public function setGender(string $value)
+	{
+		$this->gender = htmlspecialchars($value);
+	}
+	public function getGender()
+	{
+		return $this->gender;
 	}
 
 	public function setLastName(string $value)
