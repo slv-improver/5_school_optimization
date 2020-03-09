@@ -63,6 +63,15 @@ class Child
 	{
 		return $this->birthDate;
 	}
+
+	public function setAddress(string $value)
+	{
+		$this->address = htmlspecialchars($value);
+	}
+	public function getAddress()
+	{
+		return $this->address;
+	}
 	
 	public function setFather(array $value)
 	{

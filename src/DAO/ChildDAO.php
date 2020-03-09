@@ -40,7 +40,7 @@ class ChildDAO extends DAO
 
 	public function childCard($childId)
 	{
-		$sql = 'SELECT id, last_name lastName, first_name firstName, birth_date birthDate
+		$sql = 'SELECT id, last_name lastName, first_name firstName, birth_date birthDate, address
 			FROM child WHERE id = ?';
 		$result = $this->createQuery($sql, [$childId]);
 		$child = $result->fetch();
