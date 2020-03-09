@@ -3,6 +3,7 @@
 $lastName = strtoupper($child->getLastName());
 $firstName = ucfirst($child->getFirstName());
 $birthDate = $child->getBirthDate();
+$address = $child->getAddress() ?? '';
 $diff = $child->getBirthDate()->diff(new DateTime());
 $father = $child->getFather();
 $mother = $child->getMother();
@@ -16,8 +17,6 @@ $mother = $child->getMother();
 
 <section class="info">
 	<h2 align='center'>Informations Administratives</h2>
-
-	<p>Adresse : </p>
 
 	<table class="parent">
 		<tr>
@@ -40,6 +39,10 @@ $mother = $child->getMother();
 			<td><?= isset($mother) ? ucfirst($mother->getFirstName()) : '' ?></td>
 			<td><?= isset($mother) ? $mother->getPhone() : '' ?></td>
 			<td><?= isset($mother) ? $mother->getMail() : '' ?></td>
+		</tr>
+		<tr>
+			<td>Adresse</td>
+			<td colspan="4"><?= $address ?></td>
 		</tr>
 	</table>
 
