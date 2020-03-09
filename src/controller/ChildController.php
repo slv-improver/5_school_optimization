@@ -18,7 +18,7 @@ class ChildController extends Controller
 			}
 			return $this->view->render('home', [
 				'children' => $children
-				]);
+			]);
 		}
 	}
 
@@ -32,14 +32,15 @@ class ChildController extends Controller
 		}
 		return $this->view->render('register');
 	}
-	
+
 	public function deleteChild($childId)
 	{
 		$this->childDAO->deleteChild($childId);
 		$this->session->set('delete_child', 'L\'enfant a bien été supprimé');
 		header('Location: index.php?route=listChildren');
 		exit;
-	}	
+	}
+	
 	/**
 	 * childCard 
 	 *
@@ -49,6 +50,21 @@ class ChildController extends Controller
 	public function childCard($childId)
 	{
 		$childArray = $this->childDAO->childCard($childId);
+		$parents = $this->childDAO->getparents($childId);
+		foreach ($parents as $parent) {
+			if ($parent['rank'] === 'father') {
+				$childArray['father'] = $parent;
+			}
+			if ($parent['rank'] === 'mother') {
+				$childArray['mother'] = $parent;
+			}
+		}
+		/* if ($father = $this->childDAO->getFather($childId)) {
+			$childArray['father'] = $father;
+		}
+		if ($mother = $this->childDAO->getMother($childId)) {
+			$childArray['mother'] = $mother;
+		} */
 		$child = new Child($childArray);
 		return $this->view->render('card', [
 			'child' => $child
