@@ -8,7 +8,7 @@ label {
 	float: left;
 }
 
-table {
+table:not(.parent) {
 	margin: auto;
 }
 tbody tr:nth-child(odd) {
@@ -16,5 +16,5 @@ tbody tr:nth-child(odd) {
 }
 td, th {
 	padding: 5px 10px;
-	border: 1px black outset;
+	border: 1px #1f20405c outset;
 }
