@@ -10,6 +10,8 @@ class Child
 	private $lastName;
 	private $firstName;
 	private $birthDate;
+	private $father;
+	private $mother;
 
 	public function __construct(array $data)
 	{
@@ -55,11 +57,28 @@ class Child
 
 	public function setBirthDate(string $value)
 	{
-
 		$this->birthDate = new DateTime($value);
 	}
 	public function getBirthDate()
 	{
 		return $this->birthDate;
+	}
+	
+	public function setFather(array $value)
+	{
+		$this->father = new ParentOfChild($value);
+	}
+	public function getFather()
+	{
+		return $this->father;
+	}
+
+	public function setMother(array $value)
+	{
+		$this->mother = new ParentOfChild($value);
+	}
+	public function getMother()
+	{
+		return $this->mother;
 	}
 }
