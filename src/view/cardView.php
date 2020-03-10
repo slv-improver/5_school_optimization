@@ -60,5 +60,8 @@ $mother = $child->getMother();
 		
 		<h4>Vaccins</h4>
 		<p><?= $child->getVaccines() ?></p>
+		
+		<h4>Autres Informations</h4>
+		<p><?= $child->getOther() ?></p>
 	</section>
 </section>
