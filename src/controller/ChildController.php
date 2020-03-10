@@ -53,11 +53,26 @@ class ChildController extends Controller
 	public function childCard($childId)
 	{
 		if ($this->checkLoggedIn()) {
-			$childArray = $this->childDAO->childCard($childId);
-			$child = new Child($childArray);
-			return $this->view->render('card', [
-				'child' => $child
-			]);
+		$childArray = $this->childDAO->childCard($childId);
+		$parents = $this->childDAO->getparents($childId);
+		foreach ($parents as $parent) {
+			if ($parent['rank'] === 'father') {
+				$childArray['father'] = $parent;
+			}
+			if ($parent['rank'] === 'mother') {
+				$childArray['mother'] = $parent;
+			}
+		}
+		/* if ($father = $this->childDAO->getFather($childId)) {
+			$childArray['father'] = $father;
+		}
+		if ($mother = $this->childDAO->getMother($childId)) {
+			$childArray['mother'] = $mother;
+		} */
+		$child = new Child($childArray);
+		return $this->view->render('card', [
+			'child' => $child
+		]);
 		}
 	}
 }
