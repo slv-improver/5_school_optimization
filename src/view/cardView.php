@@ -57,5 +57,8 @@ $mother = $child->getMother();
 	<section>
 		<h4>Allergies</h4>
 		<p><?= $child->getAllergies() ?></p>
+		
+		<h4>Vaccins</h4>
+		<p><?= $child->getVaccines() ?></p>
 	</section>
 </section>

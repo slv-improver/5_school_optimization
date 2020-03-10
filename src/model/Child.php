@@ -13,6 +13,7 @@ class Child
 	private $father;
 	private $mother;
 	private $allergies;
+	private $vaccines;
 
 	public function __construct(array $data)
 	{
@@ -99,5 +100,14 @@ class Child
 	public function getAllergies()
 	{
 		return $this->allergies;
+	}
+
+	public function setVaccines(string $value)
+	{
+		$this->vaccines = htmlspecialchars($value);
+	}
+	public function getVaccines()
+	{
+		return $this->vaccines;
 	}
 }
