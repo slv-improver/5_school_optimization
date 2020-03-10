@@ -1,7 +1,7 @@
 <?php $title = "Fiche de l\'enfant"; ?>
 <?php
-$lastName = strtoupper($child->getLastName());
-$firstName = ucfirst($child->getFirstName());
+$lastName = $child->getLastName();
+$firstName = $child->getFirstName();
 $birthDate = $child->getBirthDate();
 $address = $child->getAddress() ?? '';
 $diff = $child->getBirthDate()->diff(new DateTime());
@@ -28,15 +28,15 @@ $mother = $child->getMother();
 		</tr>
 		<tr>
 			<td><?= isset($father) ? ucfirst($father->getRank()) : '' ?></td>
-			<td><?= isset($father) ? strtoupper($father->getLastName()) : '' ?></td>
-			<td><?= isset($father) ? ucfirst($father->getFirstName()) : '' ?></td>
+			<td><?= isset($father) ? $father->getLastName() : '' ?></td>
+			<td><?= isset($father) ? $father->getFirstName() : '' ?></td>
 			<td><?= isset($father) ? $father->getPhone() : '' ?></td>
 			<td><?= isset($father) ? $father->getMail() : '' ?></td>
 		</tr>
 		<tr>
 			<td><?= isset($mother) ? ucfirst($mother->getRank()) : '' ?></td>
-			<td><?= isset($mother) ? strtoupper($mother->getLastName()) : '' ?></td>
-			<td><?= isset($mother) ? ucfirst($mother->getFirstName()) : '' ?></td>
+			<td><?= isset($mother) ? $mother->getLastName() : '' ?></td>
+			<td><?= isset($mother) ? $mother->getFirstName() : '' ?></td>
 			<td><?= isset($mother) ? $mother->getPhone() : '' ?></td>
 			<td><?= isset($mother) ? $mother->getMail() : '' ?></td>
 		</tr>

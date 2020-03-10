@@ -53,7 +53,7 @@ class ParentOfChild
 
 	public function setLastName($value)
 	{
-		$this->lastName = htmlspecialchars($value);
+		$this->lastName = strtoupper(htmlspecialchars($value));
 	}
 	public function getLastName()
 	{
@@ -62,7 +62,7 @@ class ParentOfChild
 
 	public function setFirstName($value)
 	{
-		$this->firstName = htmlspecialchars($value);
+		$this->firstName = ucfirst(htmlspecialchars($value));
 	}
 	public function getFirstName()
 	{

@@ -39,7 +39,7 @@ class Child
 
 	public function setLastName(string $value)
 	{
-		$this->lastName = htmlspecialchars($value);
+		$this->lastName = strtoupper(htmlspecialchars($value));
 	}
 	public function getLastName()
 	{
@@ -48,7 +48,7 @@ class Child
 
 	public function setFirstName(string $value)
 	{
-		$this->firstName = htmlspecialchars($value);
+		$this->firstName = ucfirst(htmlspecialchars($value));
 	}
 	public function getFirstName()
 	{
