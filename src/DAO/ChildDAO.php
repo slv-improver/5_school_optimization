@@ -31,7 +31,7 @@ class ChildDAO extends DAO
 			$post->get('first_name'), 
 			$post->get('birth_date')
 		]);
-		
+
 		$id = $this->createQuery('SELECT LAST_INSERT_ID()')->fetch()[0];
 		$this->createQuery("ALTER TABLE `attendance` ADD `$id` DECIMAL NOT NULL DEFAULT '-1'");
 		return $req;
@@ -40,7 +40,9 @@ class ChildDAO extends DAO
 	public function deleteChild($childId)
 	{
 		$sql = 'DELETE FROM child WHERE id = ?';
-		return $this->createQuery($sql, [$childId]);
+		$req = $this->createQuery($sql, [$childId]);
+		$this->createQuery("ALTER TABLE `attendance` DROP `$childId`");
+		return $req;
 	}
 
 	public function childCard($childId)
