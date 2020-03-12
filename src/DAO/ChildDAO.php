@@ -28,7 +28,7 @@ class ChildDAO extends DAO
 		$req = $this->createQuery($sql, [
 			$post->get('gender'),
 			$post->get('last_name'),
-			$post->get('first_name'), 
+			$post->get('first_name'),
 			$post->get('birth_date')
 		]);
 
@@ -54,7 +54,7 @@ class ChildDAO extends DAO
 		$result->closeCursor();
 		return $child;
 	}
-		
+
 	/**
 	 * getParents of child 
 	 *
@@ -89,4 +89,31 @@ class ChildDAO extends DAO
 		$result->closeCursor();
 		return $mother;
 	} */
+	protected function rowExists($day)
+	{
+		$sql = 'SELECT id, day FROM attendance WHERE day = ?';
+		$exists = $this->createQuery($sql, [$day])->fetch();
+		return $exists;
+	}
+	protected function updateRow($rowId, $childId, $amount)
+	{
+		$sql = "UPDATE attendance SET `$childId` = ? WHERE id = ?";
+		$this->createQuery($sql, [$amount, $rowId]);
+	}
+	protected function insertRow($childId, $day, $amount)
+	{
+		$sql = "INSERT INTO attendance (day, `$childId`) VALUE (?, ?)";
+		$this->createQuery($sql, [$day, $amount]);
+	}
+	public function manageAttendance($childId, $day, $amount)
+	{
+		$rowId = $this->rowExists($day)['id'];
+		if ($rowId) {
+			echo 'good';
+			$this->updateRow($rowId, $childId, $amount);
+		} else {
+			echo 'cool';
+			$this->insertRow($childId, $day, $amount);
+		}
+	}
 }
