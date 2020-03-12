@@ -23,9 +23,10 @@ class ChildDAO extends DAO
 
 	public function addChild(Parameter $post)
 	{
-		$sql = 'INSERT INTO child (last_name, first_name, birth_date) 
-			VALUES (?, ?, ?)';
+		$sql = 'INSERT INTO child (gender, last_name, first_name, birth_date, allergies, vaccines, other) 
+			VALUES (?, ?, ?, ?, "", "", "")';
 		return $this->createQuery($sql, [
+			$post->get('gender'), 
 			$post->get('last_name'), 
 			$post->get('first_name'), 
 			$post->get('birth_date')
