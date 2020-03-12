@@ -25,12 +25,16 @@ class ChildDAO extends DAO
 	{
 		$sql = 'INSERT INTO child (gender, last_name, first_name, birth_date, allergies, vaccines, other) 
 			VALUES (?, ?, ?, ?, "", "", "")';
-		return $this->createQuery($sql, [
-			$post->get('gender'), 
-			$post->get('last_name'), 
+		$req = $this->createQuery($sql, [
+			$post->get('gender'),
+			$post->get('last_name'),
 			$post->get('first_name'), 
 			$post->get('birth_date')
 		]);
+		
+		$id = $this->createQuery('SELECT LAST_INSERT_ID()')->fetch()[0];
+		$this->createQuery("ALTER TABLE `attendance` ADD `$id` DECIMAL NOT NULL DEFAULT '-1'");
+		return $req;
 	}
 
 	public function deleteChild($childId)
