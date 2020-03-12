@@ -33,7 +33,7 @@ class ChildDAO extends DAO
 		]);
 
 		$id = $this->createQuery('SELECT LAST_INSERT_ID()')->fetch()[0];
-		$this->createQuery("ALTER TABLE `attendance` ADD `$id` DECIMAL NOT NULL DEFAULT '-1'");
+		$this->createQuery("ALTER TABLE `attendance` ADD `$id` DECIMAL (2,1) NOT NULL DEFAULT '-1'");
 		return $req;
 	}
 
