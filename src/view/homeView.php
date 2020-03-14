@@ -11,6 +11,7 @@
 	<thead>
 		<tr align="center">
 			<th>N°</th>
+			<td><a href="index.php?route=attendance">Présences</a></td>
 			<th>Nom</th>
 			<th>Prenom</th>
 			<th>Date de naissance</th>
@@ -26,7 +27,8 @@
 			$count++;
 		?>
 			<tr>
-				<td> <?= $count ?> </td>
+				<td><?= $count ?></td>
+				<td></td>
 				<td class="left">
 					<?= strtoupper($child->getLastName()) ?>
 				</td>

@@ -25,18 +25,24 @@ class ChildDAO extends DAO
 	{
 		$sql = 'INSERT INTO child (gender, last_name, first_name, birth_date, allergies, vaccines, other) 
 			VALUES (?, ?, ?, ?, "", "", "")';
-		return $this->createQuery($sql, [
-			$post->get('gender'), 
-			$post->get('last_name'), 
-			$post->get('first_name'), 
+		$req = $this->createQuery($sql, [
+			$post->get('gender'),
+			$post->get('last_name'),
+			$post->get('first_name'),
 			$post->get('birth_date')
 		]);
+
+		$id = $this->createQuery('SELECT LAST_INSERT_ID()')->fetch()[0];
+		$this->createQuery("ALTER TABLE `attendance` ADD `$id` DECIMAL (2,1) NOT NULL DEFAULT '-1'");
+		return $req;
 	}
 
 	public function deleteChild($childId)
 	{
 		$sql = 'DELETE FROM child WHERE id = ?';
-		return $this->createQuery($sql, [$childId]);
+		$req = $this->createQuery($sql, [$childId]);
+		$this->createQuery("ALTER TABLE `attendance` DROP `$childId`");
+		return $req;
 	}
 
 	public function childCard($childId)
@@ -48,7 +54,7 @@ class ChildDAO extends DAO
 		$result->closeCursor();
 		return $child;
 	}
-		
+
 	/**
 	 * getParents of child 
 	 *
@@ -83,4 +89,31 @@ class ChildDAO extends DAO
 		$result->closeCursor();
 		return $mother;
 	} */
+	protected function rowExists($day)
+	{
+		$sql = 'SELECT id, day FROM attendance WHERE day = ?';
+		$exists = $this->createQuery($sql, [$day])->fetch();
+		return $exists;
+	}
+	protected function updateRow($rowId, $childId, $amount)
+	{
+		$sql = "UPDATE attendance SET `$childId` = ? WHERE id = ?";
+		$this->createQuery($sql, [$amount, $rowId]);
+	}
+	protected function insertRow($childId, $day, $amount)
+	{
+		$sql = "INSERT INTO attendance (day, `$childId`) VALUE (?, ?)";
+		$this->createQuery($sql, [$day, $amount]);
+	}
+	public function manageAttendance($childId, $day, $amount)
+	{
+		$rowId = $this->rowExists($day)['id'];
+		if ($rowId) {
+			echo 'good';
+			$this->updateRow($rowId, $childId, $amount);
+		} else {
+			echo 'cool';
+			$this->insertRow($childId, $day, $amount);
+		}
+	}
 }

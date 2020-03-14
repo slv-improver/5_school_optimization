@@ -2,10 +2,14 @@ body {
 	margin: 10px;
 }
 
-label {
+label:not(.intd) {
 	display: block;
 	width: 150px;
 	float: left;
+}
+
+input {
+	margin: 5px;
 }
 
 table:not(.parent) {

@@ -51,6 +51,9 @@ class Router
 					case 'childCard':
 						$this->childController->childCard($get->get('childId'));
 						break;
+					case 'attendance':
+						$this->childController->manageAttendance($get->get('childId'), $post);
+						break;
 
 					default:
 					// if route value is not defined redirect to error_404.php
