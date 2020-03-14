@@ -75,4 +75,21 @@ class ChildController extends Controller
 		]);
 		}
 	}
+	public function manageAttendance($childId, Parameter $post)
+	{
+		if ($this->checkLoggedIn()) {
+			if ($childId && $post->get('submit')) {
+				$this->childDAO->manageAttendance($childId, date('Y-m-d'), $post->get('attendanceAmount'));
+			}
+			$childrenArray = $this->childDAO->listChildren();
+			$children = [];
+			foreach ($childrenArray as $childArray) {
+				$child = new Child($childArray);
+				$children[] = $child;
+			}
+			return $this->view->render('attendance', [
+				'children' => $children
+			]);
+		}
+	}
 }
