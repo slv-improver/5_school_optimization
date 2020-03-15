@@ -15,10 +15,9 @@
 		<td><?= $child->getFirstName() ?></td>
 		<td>
 				<label for="val-1_<?= $child->getId() ?>" class="intd">Non renseigné<input type="radio" name="attendanceAmount" value="-1" id="val-1_<?= $child->getId() ?>" checked></label>
-				<label for="val-1<?= $child->getId() ?>" class="intd">Non renseigné<input type="radio" name="attendanceAmount<?= $child->getId() ?>" value="-1" id="val-1<?= $child->getId() ?>" checked></label>
-				<label for="val0<?= $child->getId() ?>" class="intd">Absent<input type="radio" name="attendanceAmount<?= $child->getId() ?>" value="0" id="val0<?= $child->getId() ?>"></label>
-				<label for="val05<?= $child->getId() ?>" class="intd">Mi-journée<input type="radio" name="attendanceAmount<?= $child->getId() ?>" value="0.5" id="val05<?= $child->getId() ?>"></label>
-				<label for="val1<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount<?= $child->getId() ?>" value="1" id="val1<?= $child->getId() ?>"></label>
+				<label for="val0_<?= $child->getId() ?>" class="intd">Absent<input type="radio" name="attendanceAmount" value="0" id="val0_<?= $child->getId() ?>"></label>
+				<label for="val05_<?= $child->getId() ?>" class="intd">Mi-journée<input type="radio" name="attendanceAmount" value="0.5" id="val05_<?= $child->getId() ?>"></label>
+				<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 		</td>
 		<td>
 			<input type="submit" name="submit" value="Enregistrer" class="attendance">
