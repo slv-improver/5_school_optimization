@@ -98,20 +98,20 @@ class ChildDAO extends DAO
 	protected function updateRow($rowId, $childId, $amount)
 	{
 		$sql = "UPDATE attendance SET `$childId` = ? WHERE id = ?";
-		$this->createQuery($sql, [$amount, $rowId]);
+		return $this->createQuery($sql, [$amount, $rowId]);
 	}
 	protected function insertRow($childId, $day, $amount)
 	{
 		$sql = "INSERT INTO attendance (day, `$childId`) VALUE (?, ?)";
-		$this->createQuery($sql, [$day, $amount]);
+		return $this->createQuery($sql, [$day, $amount]);
 	}
 	public function manageAttendance($childId, $day, $amount)
 	{
 		$rowId = $this->rowExists($day)['id'];
 		if ($rowId) {
-			$this->updateRow($rowId, $childId, $amount);
+			return $this->updateRow($rowId, $childId, $amount);
 		} else {
-			$this->insertRow($childId, $day, $amount);
+			return $this->insertRow($childId, $day, $amount);
 		}
 	}
 }
