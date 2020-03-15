@@ -21,8 +21,7 @@
 				<label for="val1<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount<?= $child->getId() ?>" value="1" id="val1<?= $child->getId() ?>"></label>
 		</td>
 		<td>
-			<input type="submit" name="submit" value="Enregistrer">
-		</td>
+			<input type="submit" name="submit" value="Enregistrer" class="attendance">
 		</td>
 		</form>
 	</tr>
