@@ -2,7 +2,7 @@
 
 <p>Enregistrez les absences/présences des enfants</p>
 
-<table>
+<table id="attendanceTable">
 	<tr>
 		<th>NOM</th>
 		<th>Prenom</th>

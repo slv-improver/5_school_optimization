@@ -1,6 +1,7 @@
 
 function pullChild(row) {
-	row.remove()
+	row.detach().appendTo('#attendanceTable')
+	row.css('background', '#00de09b5');
 }
 
 $('input.attendance').click(function (e) {
