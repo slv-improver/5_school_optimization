@@ -109,10 +109,8 @@ class ChildDAO extends DAO
 	{
 		$rowId = $this->rowExists($day)['id'];
 		if ($rowId) {
-			echo 'good';
 			$this->updateRow($rowId, $childId, $amount);
 		} else {
-			echo 'cool';
 			$this->insertRow($childId, $day, $amount);
 		}
 	}
