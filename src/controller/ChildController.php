@@ -45,7 +45,7 @@ class ChildController extends Controller
 		}
 	}
 	/**
-	 * childCard 
+	 * childCard display child information
 	 *
 	 * @param  mixed $childId
 	 * @return ChildObject $child
@@ -63,18 +63,21 @@ class ChildController extends Controller
 				$childArray['mother'] = $parent;
 			}
 		}
-		/* if ($father = $this->childDAO->getFather($childId)) {
-			$childArray['father'] = $father;
-		}
-		if ($mother = $this->childDAO->getMother($childId)) {
-			$childArray['mother'] = $mother;
-		} */
+
 		$child = new Child($childArray);
 		return $this->view->render('card', [
 			'child' => $child
 		]);
 		}
 	}
+		
+	/**
+	 * manageAttendance save child attendance
+	 *
+	 * @param  int $childId
+	 * @param  Parameter $post
+	 * @return View|string
+	 */
 	public function manageAttendance($childId, Parameter $post)
 	{
 		if ($this->checkLoggedIn()) {
