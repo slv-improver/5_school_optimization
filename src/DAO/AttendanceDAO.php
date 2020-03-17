@@ -26,7 +26,7 @@ class AttendanceDAO extends DAO
 	 */
 	protected function updateRow($rowId, $childId, $amount)
 	{
-		$sql = "UPDATE attendance SET `$childId` = ? WHERE id = ?";
+		$sql = "UPDATE attendance SET `child$childId` = ? WHERE id = ?";
 		return $this->createQuery($sql, [$amount, $rowId]);
 	}
 	/**
@@ -39,7 +39,7 @@ class AttendanceDAO extends DAO
 	 */
 	protected function insertRow($childId, $day, $amount)
 	{
-		$sql = "INSERT INTO attendance (day, `$childId`) VALUE (?, ?)";
+		$sql = "INSERT INTO attendance (day, `child$childId`) VALUE (?, ?)";
 		return $this->createQuery($sql, [$day, $amount]);
 	}
 	/**
