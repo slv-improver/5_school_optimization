@@ -82,7 +82,7 @@ class ChildController extends Controller
 	{
 		if ($this->checkLoggedIn()) {
 			if ($childId && $post->get('submit')) {
-				$affectedLines = $this->childDAO->manageAttendance($childId, date('Y-m-d'), $post->get('attendanceAmount'));
+				$affectedLines = $this->attendanceDAO->manageAttendance($childId, date('Y-m-d'), $post->get('attendanceAmount'));
 				if ($affectedLines) {
 					echo "Success";
 					exit;
