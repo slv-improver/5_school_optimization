@@ -4,6 +4,7 @@ namespace App\src\controller;
 
 use App\src\DAO\{
 	ChildDAO,
+	ResponsableDAO,
 	UserDAO
 };
 use App\config\Request;
@@ -17,6 +18,7 @@ use App\src\model\View;
 abstract class Controller
 {
 	protected $childDAO;
+	protected $responsableDAO;
 	protected $userDAO;
 	protected $request;
 	protected $get;
@@ -27,6 +29,7 @@ abstract class Controller
 	public function __construct()
 	{
 		$this->childDAO = new ChildDAO();
+		$this->responsableDAO = new ResponsableDAO();
 		$this->userDAO = new UserDAO();
 		$this->request = new Request(); /* for $_GET, $_POST and $_SESSION */
 		$this->get = $this->request->getGet();

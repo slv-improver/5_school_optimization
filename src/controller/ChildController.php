@@ -54,7 +54,7 @@ class ChildController extends Controller
 	{
 		if ($this->checkLoggedIn()) {
 		$childArray = $this->childDAO->childCard($childId);
-		$parents = $this->childDAO->getparents($childId);
+		$parents = $this->responsableDAO->getparents($childId);
 		foreach ($parents as $parent) {
 			if ($parent['rank'] === 'father') {
 				$childArray['father'] = $parent;
