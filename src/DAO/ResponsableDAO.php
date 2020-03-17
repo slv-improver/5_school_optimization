@@ -12,8 +12,8 @@ class ResponsableDAO extends DAO
 	 */
 	public function getParents($childId)
 	{
-		$sql = 'SELECT p.rank, p.last_name lastName, p.first_name firstName, p.phone, p.mail 
-			FROM child c LEFT JOIN parent p ON father_id = p.id || mother_id = p.id WHERE c.id = ?';
+		$sql = 'SELECT r.rank, r.last_name lastName, r.first_name firstName, r.phone, r.mail 
+			FROM child c LEFT JOIN responsable r ON father_id = r.id || mother_id = r.id WHERE c.id = ?';
 		$result = $this->createQuery($sql, [$childId]);
 		$parents = $result->fetchAll();
 		$result->closeCursor();
