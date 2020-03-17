@@ -2,6 +2,7 @@
 
 namespace App\src\model;
 
+use App\src\model\Responsable;
 use DateTime;
 
 class Child
@@ -89,7 +90,7 @@ class Child
 	
 	public function setFather(array $value)
 	{
-		$this->father = new ParentOfChild($value);
+		$this->father = new Responsable($value);
 	}
 	public function getFather()
 	{
@@ -98,7 +99,7 @@ class Child
 
 	public function setMother(array $value)
 	{
-		$this->mother = new ParentOfChild($value);
+		$this->mother = new Responsable($value);
 	}
 	public function getMother()
 	{

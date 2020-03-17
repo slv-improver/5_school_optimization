@@ -2,7 +2,7 @@
 
 namespace App\src\model;
 
-class ParentOfChild
+class Responsable
 {
 	private $id;
 	private $rank;
