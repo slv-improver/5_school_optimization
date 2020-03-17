@@ -11,6 +11,7 @@ class Child
 	private $lastName;
 	private $firstName;
 	private $birthDate;
+	private $address;
 	private $father;
 	private $mother;
 	private $allergies;
