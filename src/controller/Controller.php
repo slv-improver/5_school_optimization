@@ -32,7 +32,7 @@ abstract class Controller
 	{
 		$this->childDAO = new ChildDAO();
 		$this->responsableDAO = new ResponsableDAO();
-		$this->attendance = new AttendanceDAO();
+		$this->attendanceDAO = new AttendanceDAO();
 		$this->userDAO = new UserDAO();
 		$this->request = new Request(); /* for $_GET, $_POST and $_SESSION */
 		$this->get = $this->request->getGet();
