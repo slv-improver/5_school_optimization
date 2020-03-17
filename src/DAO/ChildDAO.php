@@ -21,6 +21,12 @@ class ChildDAO extends DAO
 		return $children;
 	}
 
+	/**
+	 * addChild insert new child in db & add column equal child id in attendance table
+	 *
+	 * @param  Parameter $post
+	 * @return int count of affected lines
+	 */
 	public function addChild(Parameter $post)
 	{
 		$sql = 'INSERT INTO child (gender, last_name, first_name, birth_date, allergies, vaccines, other) 
@@ -37,6 +43,12 @@ class ChildDAO extends DAO
 		return $req;
 	}
 
+	/**
+	 * deleteChild by id
+	 *
+	 * @param  int $childId
+	 * @return int count of affected lines
+	 */
 	public function deleteChild($childId)
 	{
 		$sql = 'DELETE FROM child WHERE id = ?';
@@ -44,7 +56,13 @@ class ChildDAO extends DAO
 		$this->createQuery("ALTER TABLE `attendance` DROP `$childId`");
 		return $req;
 	}
-
+	
+	/**
+	 * childCard select all information from child by id
+	 *
+	 * @param  int $childId
+	 * @return array $child
+	 */
 	public function childCard($childId)
 	{
 		$sql = 'SELECT id, gender, last_name lastName, first_name firstName, birth_date birthDate, address, allergies, vaccines, other
@@ -53,65 +71,5 @@ class ChildDAO extends DAO
 		$child = $result->fetch();
 		$result->closeCursor();
 		return $child;
-	}
-
-	/**
-	 * getParents of child 
-	 *
-	 * @param  mixed $childId
-	 * @return array $parents
-	 */
-	public function getParents($childId)
-	{
-		$sql = 'SELECT p.rank, p.last_name lastName, p.first_name firstName, p.phone, p.mail 
-			FROM child c LEFT JOIN parent p ON father_id = p.id || mother_id = p.id WHERE c.id = ?';
-		$result = $this->createQuery($sql, [$childId]);
-		$parents = $result->fetchAll();
-		$result->closeCursor();
-		return $parents;
-	}
-	/* 
-	public function getFather($childId)
-	{
-		$sql = 'SELECT p.id, p.rank, p.last_name lastName, p.first_name firstName, p.phone, p.mail 
-			FROM child c LEFT JOIN parent p ON father_id = p.id WHERE c.id = ?';
-		$result = $this->createQuery($sql, [$childId]);
-		$father = $result->fetch();
-		$result->closeCursor();
-		return $father;
-	}
-	public function getMother($childId)
-	{
-		$sql = 'SELECT p.id, p.rank, p.last_name lastName, p.first_name firstName, p.phone, p.mail 
-			FROM child c LEFT JOIN parent p ON mother_id = p.id WHERE c.id = ?';
-		$result = $this->createQuery($sql, [$childId]);
-		$mother = $result->fetch();
-		$result->closeCursor();
-		return $mother;
-	} */
-	protected function rowExists($day)
-	{
-		$sql = 'SELECT id, day FROM attendance WHERE day = ?';
-		$exists = $this->createQuery($sql, [$day])->fetch();
-		return $exists;
-	}
-	protected function updateRow($rowId, $childId, $amount)
-	{
-		$sql = "UPDATE attendance SET `$childId` = ? WHERE id = ?";
-		return $this->createQuery($sql, [$amount, $rowId]);
-	}
-	protected function insertRow($childId, $day, $amount)
-	{
-		$sql = "INSERT INTO attendance (day, `$childId`) VALUE (?, ?)";
-		return $this->createQuery($sql, [$day, $amount]);
-	}
-	public function manageAttendance($childId, $day, $amount)
-	{
-		$rowId = $this->rowExists($day)['id'];
-		if ($rowId) {
-			return $this->updateRow($rowId, $childId, $amount);
-		} else {
-			return $this->insertRow($childId, $day, $amount);
-		}
 	}
 }

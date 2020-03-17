@@ -45,7 +45,7 @@ class ChildController extends Controller
 		}
 	}
 	/**
-	 * childCard 
+	 * childCard display child information
 	 *
 	 * @param  mixed $childId
 	 * @return ChildObject $child
@@ -54,7 +54,7 @@ class ChildController extends Controller
 	{
 		if ($this->checkLoggedIn()) {
 		$childArray = $this->childDAO->childCard($childId);
-		$parents = $this->childDAO->getparents($childId);
+		$parents = $this->responsableDAO->getparents($childId);
 		foreach ($parents as $parent) {
 			if ($parent['rank'] === 'father') {
 				$childArray['father'] = $parent;
@@ -63,23 +63,26 @@ class ChildController extends Controller
 				$childArray['mother'] = $parent;
 			}
 		}
-		/* if ($father = $this->childDAO->getFather($childId)) {
-			$childArray['father'] = $father;
-		}
-		if ($mother = $this->childDAO->getMother($childId)) {
-			$childArray['mother'] = $mother;
-		} */
+
 		$child = new Child($childArray);
 		return $this->view->render('card', [
 			'child' => $child
 		]);
 		}
 	}
+		
+	/**
+	 * manageAttendance save child attendance
+	 *
+	 * @param  int $childId
+	 * @param  Parameter $post
+	 * @return View|string
+	 */
 	public function manageAttendance($childId, Parameter $post)
 	{
 		if ($this->checkLoggedIn()) {
 			if ($childId && $post->get('submit')) {
-				$affectedLines = $this->childDAO->manageAttendance($childId, date('Y-m-d'), $post->get('attendanceAmount'));
+				$affectedLines = $this->attendanceDAO->manageAttendance($childId, date('Y-m-d'), $post->get('attendanceAmount'));
 				if ($affectedLines) {
 					echo "Success";
 					exit;

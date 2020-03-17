@@ -16,9 +16,9 @@ abstract class DAO
 	private $connection;
 	
 	/**
-	 * getConnection
+	 * getConnection to db
 	 *
-	 * @return void
+	 * @return PDO $connection
 	 */
 	public function getConnection()
 	{
@@ -37,7 +37,7 @@ abstract class DAO
 	 * checkConnection etablishes connection if not exists
 	 * return it if exists
 	 *
-	 * @return PDO object
+	 * @return PDO $connection
 	 */
 	private function checkConnection()
 	{
@@ -51,8 +51,8 @@ abstract class DAO
 	 * createQuery prepare and execute sql request if $parameters defined
 	 *
 	 * @param  string $sql
-	 * @param  array $parameters
-	 * @return PDOStatement
+	 * @param  array|null $parameters
+	 * @return PDOStatement|false $result
 	 */
 	protected function createQuery($sql, $parameters = null)
 	{ 
