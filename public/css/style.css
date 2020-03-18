@@ -2,6 +2,10 @@ body {
 	margin: 10px;
 }
 
+.haveAttendance {
+	background: #00de09b5;
+}
+
 label:not(.intd) {
 	display: block;
 	width: 150px;
@@ -15,7 +19,7 @@ input {
 table:not(.parent) {
 	margin: auto;
 }
-tbody tr:nth-child(odd) {
+tbody tr:nth-child(odd):not(.haveAttendance) {
 	background: rgba(98, 180, 193, 0.251);
 }
 td, th {
