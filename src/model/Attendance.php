@@ -6,12 +6,15 @@ use DateTime;
 
 class Attendance
 {
+	private $table = [];
 	private $amount = [];
 	private $day = [];
 
 	public function __construct(array $data)
 	{
 		foreach ($data as $row) {
+			// display data as [date] => attendance (0/.5/1)
+			$this->table[$row['day']] = $row['amount'];
 			$this->hydrate($row);
 		}
 	}
