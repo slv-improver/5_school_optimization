@@ -28,7 +28,7 @@
 		</tr>
 	<?php endforeach; ?>
 	<tr align="center">
-		<th colspan="4">Enregistrés</th>
+		<th colspan="3" class="split">Enregistrés</th>
 	</tr>
 	<?php foreach ($childrenHaveAttendance as $child) : ?>
 		<tr class="haveAttendance">
@@ -42,7 +42,7 @@
 					<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 				</td>
 				<td>
-					<input type="submit" name="submit" value="Enregistrer" class="attendance">
+					<input type="submit" name="submit" value="Réctifier" class="attendance">
 				</td>
 			</form>
 		</tr>

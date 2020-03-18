@@ -19,7 +19,7 @@ $('input.attendance').click(function (e) {
 			if (data == 'Success') {
 				pullChild(tr);
 			} else {
-				tr.css('background', '#ff0000b5');
+				tr.css('border', '5px dashed #ff0000b5');
 			}
 		},
 		'text'

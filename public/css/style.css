@@ -13,8 +13,13 @@ a[href="#"] {
 	bottom: 15px;
 }
 
+.split {
+	background: #00b128;
+}
+
 .haveAttendance {
-	background: #00de09b5;
+	border: 0;
+	border: 3px dashed #00b128;
 }
 
 label:not(.intd) {
@@ -30,10 +35,10 @@ input {
 table:not(.parent) {
 	margin: auto;
 }
-tbody tr:nth-child(odd):not(.haveAttendance) {
-	background: rgba(98, 180, 193, 0.251);
+tbody tr:nth-child(odd) {
+	background: #5d5c6d38;
 }
 td, th {
 	padding: 5px 10px;
-	border: 1px #1f20405c outset;
+	border: 1px solid #16154491;
 }
