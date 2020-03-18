@@ -86,8 +86,9 @@ class ChildController extends Controller
 	public function manageAttendance($childId, Parameter $post)
 	{
 		if ($this->checkLoggedIn()) {
+			$date = date('Y-m-d');
 			if ($childId && $post->get('submit')) {
-				$affectedLines = $this->attendanceDAO->manageAttendance($childId, date('Y-m-d'), $post->get('attendanceAmount'));
+				$affectedLines = $this->attendanceDAO->manageAttendance($childId, $date, $post->get('attendanceAmount'));
 				if ($affectedLines) {
 					echo "Success";
 					exit;
