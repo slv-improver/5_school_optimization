@@ -59,4 +59,16 @@ class AttendanceDAO extends DAO
 			return $this->insertRow($childId, $day, $amount);
 		}
 	}
+	
+	/**
+	 * getAttendanceChild from the first day to the last
+	 *
+	 * @param  int $childId
+	 * @return array of array 
+	 */
+	public function getAttendanceChild($childId)
+	{
+		$sql = "SELECT day, `child$childId` amount FROM attendance WHERE `child$childId` >= 0 ORDER BY day";
+		return $this->createQuery($sql)->fetchAll();
+	}
 }
