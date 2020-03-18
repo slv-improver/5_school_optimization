@@ -66,6 +66,8 @@ class ChildController extends Controller
 				}
 			}
 
+			$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childId);
+
 			$child = new Child($childArray);
 			return $this->view->render('card', [
 				'child' => $child
