@@ -11,7 +11,7 @@ $mother = $child->getMother();
 $attendance = $child->getAttendance();
 ?>
 
-<a href="index.php?route=listChildren">Accueil</a>
+<a href="index.php?route=listChildren"><img src="https://img.icons8.com/material-outlined/50/000000/home--v2.png" /></a>
 <h2 align='center'><?= $lastName ?> <?= $firstName ?></h2>
 <p>
 	né<?= $gender ?> le <?= $birthDate->format('d/m/Y') ?><br>
@@ -61,10 +61,10 @@ $attendance = $child->getAttendance();
 	<section>
 		<h4>Allergies</h4>
 		<p><?= $child->getAllergies() ?></p>
-		
+
 		<h4>Vaccins</h4>
 		<p><?= $child->getVaccines() ?></p>
-		
+
 		<h4>Autres Informations</h4>
 		<p><?= $child->getOther() ?></p>
 	</section>

@@ -1,6 +1,6 @@
 <?php $title = 'Enregistrement des présences'; ?>
 
-<a href="?route=listChildren">Accueil</a>
+<a href="?route=listChildren"><img src="https://img.icons8.com/material-outlined/50/000000/home--v2.png" /></a>
 
 <p>Enregistrez les absences/présences des enfants</p>
 
