@@ -47,4 +47,9 @@ class Attendance
 	{
 		return $this->day;
 	}
+
+	public function getPercent()
+	{
+		return round(array_sum($this->amount) / count($this->amount) * 100, 2);
+	}
 }
