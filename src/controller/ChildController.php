@@ -99,12 +99,20 @@ class ChildController extends Controller
 			}
 			$childrenArray = $this->childDAO->listChildren();
 			$children = [];
+			$childrenHaveAttendance = [];
 			foreach ($childrenArray as $childArray) {
+				// add attendance key to childArray
+				$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
 				$child = new Child($childArray);
-				$children[] = $child;
+				if (array_key_exists($date, $child->getAttendance()->getTable())) {
+					$childrenHaveAttendance[] = $child;
+				} else {
+					$children[] = $child;
+				}
 			}
 			return $this->view->render('attendance', [
-				'children' => $children
+				'children' => $children,
+				'childrenHaveAttendance' => $childrenHaveAttendance
 			]);
 		}
 	}
