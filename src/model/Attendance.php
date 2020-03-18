@@ -52,4 +52,9 @@ class Attendance
 	{
 		return round(array_sum($this->amount) / count($this->amount) * 100, 2);
 	}
+
+	public function getTable()
+	{
+		return $this->table;
+	}
 }
