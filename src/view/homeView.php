@@ -28,7 +28,7 @@
 		?>
 			<tr>
 				<td><?= $count ?></td>
-				<td></td>
+				<td><?= $child->getAttendance()->getPercent() ?>%</td>
 				<td class="left">
 					<?= strtoupper($child->getLastName()) ?>
 				</td>

@@ -8,6 +8,7 @@ $diff = $child->getBirthDate()->diff(new DateTime());
 $gender = $child->getGender() === 'm' ? '' : 'e';
 $father = $child->getFather();
 $mother = $child->getMother();
+$attendance = $child->getAttendance();
 ?>
 
 <a href="index.php?route=listChildren">Accueil</a>
@@ -16,6 +17,7 @@ $mother = $child->getMother();
 	né<?= $gender ?> le <?= $birthDate->format('d/m/Y') ?><br>
 	<?= $diff->y ?> ans <?= $diff->m ?> mois <?= $diff->d ?> jours
 </p>
+<p>Pourcentage de présence depuis le <?= $attendance->getDay()[0]->format('d/m/Y') ?> : <?= $attendance->getPercent() ?>%</p>
 
 <section class="info">
 	<h2 align='center'>Informations Administratives</h2>
