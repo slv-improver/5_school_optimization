@@ -1,5 +1,7 @@
 <?php $title = 'Enregistrement des présences'; ?>
 
+<a href="?route=listChildren">Accueil</a>
+
 <p>Enregistrez les absences/présences des enfants</p>
 
 <table id="attendanceTable">
