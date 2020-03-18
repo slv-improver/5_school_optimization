@@ -13,6 +13,7 @@ class ChildController extends Controller
 			$childrenArray = $this->childDAO->listChildren();
 			$children = [];
 			foreach ($childrenArray as $childArray) {
+				// add attendance key to childArray
 				$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
 				$child = new Child($childArray);
 				$children[] = $child;
@@ -67,7 +68,8 @@ class ChildController extends Controller
 				}
 			}
 
-			$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childId);
+			// add attendance key to childArray
+			$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
 
 			$child = new Child($childArray);
 			return $this->view->render('card', [
