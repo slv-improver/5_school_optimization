@@ -13,6 +13,7 @@ class ChildController extends Controller
 			$childrenArray = $this->childDAO->listChildren();
 			$children = [];
 			foreach ($childrenArray as $childArray) {
+				// add attendance key to childArray
 				$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
 				$child = new Child($childArray);
 				$children[] = $child;
@@ -67,7 +68,8 @@ class ChildController extends Controller
 				}
 			}
 
-			$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childId);
+			// add attendance key to childArray
+			$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
 
 			$child = new Child($childArray);
 			return $this->view->render('card', [
@@ -86,8 +88,9 @@ class ChildController extends Controller
 	public function manageAttendance($childId, Parameter $post)
 	{
 		if ($this->checkLoggedIn()) {
+			$date = date('Y-m-d');
 			if ($childId && $post->get('submit')) {
-				$affectedLines = $this->attendanceDAO->manageAttendance($childId, date('Y-m-d'), $post->get('attendanceAmount'));
+				$affectedLines = $this->attendanceDAO->manageAttendance($childId, $date, $post->get('attendanceAmount'));
 				if ($affectedLines) {
 					echo "Success";
 					exit;
@@ -98,12 +101,20 @@ class ChildController extends Controller
 			}
 			$childrenArray = $this->childDAO->listChildren();
 			$children = [];
+			$childrenHaveAttendance = [];
 			foreach ($childrenArray as $childArray) {
+				// add attendance key to childArray
+				$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
 				$child = new Child($childArray);
-				$children[] = $child;
+				if (array_key_exists($date, $child->getAttendance()->getTable())) {
+					$childrenHaveAttendance[] = $child;
+				} else {
+					$children[] = $child;
+				}
 			}
 			return $this->view->render('attendance', [
-				'children' => $children
+				'children' => $children,
+				'childrenHaveAttendance' => $childrenHaveAttendance
 			]);
 		}
 	}
