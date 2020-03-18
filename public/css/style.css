@@ -2,6 +2,17 @@ body {
 	margin: 10px;
 }
 
+a[href$="logout"] {
+	position: fixed;
+	right: 15px;
+	top: 15px;
+}
+a[href="#"] {
+	position: fixed;
+	right: 15px;
+	bottom: 15px;
+}
+
 .haveAttendance {
 	background: #00de09b5;
 }
