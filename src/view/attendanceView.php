@@ -28,7 +28,7 @@
 		</tr>
 	<?php endforeach; ?>
 	<?php foreach ($childrenHaveAttendance as $child) : ?>
-		<tr>
+		<tr class="haveAttendance">
 			<form action="index.php?route=attendance&amp;childId=<?= $child->getId() ?>" method="post">
 				<td><?= $child->getLastName() ?></td>
 				<td><?= $child->getFirstName() ?></td>
