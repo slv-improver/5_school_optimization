@@ -27,6 +27,9 @@
 			</form>
 		</tr>
 	<?php endforeach; ?>
+	<tr align="center">
+		<th colspan="4">Enregistrés</th>
+	</tr>
 	<?php foreach ($childrenHaveAttendance as $child) : ?>
 		<tr class="haveAttendance">
 			<form action="index.php?route=attendance&amp;childId=<?= $child->getId() ?>" method="post">
