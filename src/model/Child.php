@@ -2,7 +2,10 @@
 
 namespace App\src\model;
 
-use App\src\model\Responsable;
+use App\src\model\{
+	Responsable,
+	Attendance
+};
 use DateTime;
 
 class Child
@@ -13,6 +16,7 @@ class Child
 	private $firstName;
 	private $birthDate;
 	private $address;
+	private $attendance;
 	private $father;
 	private $mother;
 	private $allergies;
@@ -87,7 +91,16 @@ class Child
 	{
 		return $this->address;
 	}
-	
+
+	public function setAttendance(array $value)
+	{
+		$this->attendance =  new Attendance($value);
+	}
+	public function getAttendance()
+	{
+		return $this->attendance;
+	}
+
 	public function setFather(array $value)
 	{
 		$this->father = new Responsable($value);
