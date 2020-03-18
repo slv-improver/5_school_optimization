@@ -13,6 +13,7 @@ class ChildController extends Controller
 			$childrenArray = $this->childDAO->listChildren();
 			$children = [];
 			foreach ($childrenArray as $childArray) {
+				$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
 				$child = new Child($childArray);
 				$children[] = $child;
 			}
