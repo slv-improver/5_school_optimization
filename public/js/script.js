@@ -2,7 +2,7 @@
 function pullChild(row, submit) {
 	row.detach().appendTo('#attendanceTable');
 	row.addClass('haveAttendance');
-	submit.value = 'Réctifier';
+	submit.src = 'images/resave.png';
 }
 
 $('input.attendance').click(function (e) {

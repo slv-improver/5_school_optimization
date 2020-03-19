@@ -24,7 +24,7 @@
 					<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 				</td>
 				<td>
-					<input type="submit" name="submit" value="Enregistrer" class="attendance">
+					<input type="image" src="images/checkmark.png" name="submit" value="Enregistrer" class="attendance">
 				</td>
 			</form>
 		</tr>
@@ -44,7 +44,7 @@
 					<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 				</td>
 				<td>
-					<input type="submit" src="images/delete.png" name="submit" value="Réctifier" class="attendance">
+					<input type="image" src="images/resave.png" name="submit" value="Réctifier" class="attendance">
 				</td>
 			</form>
 		</tr>

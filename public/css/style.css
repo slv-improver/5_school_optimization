@@ -13,7 +13,7 @@ a[href="#"] {
 	bottom: 15px;
 }
 
-img {
+img, [type='image'] {
 	height: 20px;
 }
 
