@@ -5,11 +5,13 @@
 <p>Enregistrez les absences/présences des enfants</p>
 
 <table id="attendanceTable">
-	<tr>
-		<th>NOM</th>
-		<th>Prenom</th>
-		<th>Présence</th>
-	</tr>
+	<thead>
+		<tr>
+			<th>NOM</th>
+			<th>Prenom</th>
+			<th>Présence</th>
+		</tr>
+	</thead>
 	<?php foreach ($children as $child) : ?>
 		<tr>
 			<form action="index.php?route=attendance&amp;childId=<?= $child->getId() ?>" method="post">
@@ -42,7 +44,7 @@
 					<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 				</td>
 				<td>
-					<input type="submit" name="submit" value="Réctifier" class="attendance">
+					<input type="submit" src="images/delete.png" name="submit" value="Réctifier" class="attendance">
 				</td>
 			</form>
 		</tr>
