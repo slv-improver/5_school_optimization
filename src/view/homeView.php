@@ -11,12 +11,12 @@
 	<thead>
 		<tr align="center">
 			<th>N°</th>
-			<td><a href="index.php?route=attendance"><img src="https://img.icons8.com/color/30/000000/inspection.png" /></a></td>
+			<td><a href="index.php?route=attendance"><img src="images/check.png" /></a></td>
 			<th>Nom</th>
 			<th>Prenom</th>
 			<th>Date de naissance</th>
 			<th>Age</th>
-			<td><a href="index.php?route=addChild"><img src="https://img.icons8.com/cotton/30/000000/plus--v1.png" /></a></td>
+			<td><a href="index.php?route=addChild"><img src="images/add.png" /></a></td>
 		</tr>
 	</thead>
 
@@ -44,10 +44,10 @@
 					?>
 				</td>
 				<td align="center">
-					<a href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>"><img src="https://img.icons8.com/cotton/30/000000/minus--v1.png" /></a>
+					<a class="delete" href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>"><img src="images/delete.png" /></a>
 				</td>
 				<td>
-					<a href="index.php?route=childCard&amp;childId=<?= $child->getId() ?>"><img src="https://img.icons8.com/android/30/000000/long-arrow-right.png" /><img src="https://img.icons8.com/carbon-copy/30/000000/document.png" /></a>
+					<a href="index.php?route=childCard&amp;childId=<?= $child->getId() ?>"><img src="images/arrow.png" /><img src="images/document.png" /></a>
 				</td>
 			</tr>
 		<?php endforeach; ?>
