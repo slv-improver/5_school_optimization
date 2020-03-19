@@ -1,7 +1,8 @@
 
-function pullChild(row) {
-	row.detach().appendTo('#attendanceTable')
-	row.classList.add('haveAttendance');
+function pullChild(row, submit) {
+	row.detach().appendTo('#attendanceTable');
+	row.addClass('haveAttendance');
+	submit.value = 'Réctifier';
 }
 
 $('input.attendance').click(function (e) {
@@ -17,9 +18,9 @@ $('input.attendance').click(function (e) {
 		},
 		function (data) {
 			if (data == 'Success') {
-				pullChild(tr);
+				pullChild(tr, e.target);
 			} else {
-				tr.css('border', '5px dashed #ff0000b5');
+				tr.css('border', '3px dashed #ff0000b5');
 			}
 		},
 		'text'
