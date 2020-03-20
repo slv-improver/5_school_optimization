@@ -1,15 +1,17 @@
 <?php $title = 'Enregistrement des présences'; ?>
 
-<a href="?route=listChildren">Accueil</a>
+<a href="?route=listChildren"><img src="https://img.icons8.com/material-outlined/50/000000/home--v2.png" /></a>
 
 <p>Enregistrez les absences/présences des enfants</p>
 
 <table id="attendanceTable">
-	<tr>
-		<th>NOM</th>
-		<th>Prenom</th>
-		<th>Présence</th>
-	</tr>
+	<thead>
+		<tr>
+			<th>NOM</th>
+			<th>Prenom</th>
+			<th>Présence</th>
+		</tr>
+	</thead>
 	<?php foreach ($children as $child) : ?>
 		<tr>
 			<form action="index.php?route=attendance&amp;childId=<?= $child->getId() ?>" method="post">
@@ -22,13 +24,13 @@
 					<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 				</td>
 				<td>
-					<input type="submit" name="submit" value="Enregistrer" class="attendance">
+					<input type="image" src="images/checkmark.png" name="submit" value="Enregistrer" class="attendance">
 				</td>
 			</form>
 		</tr>
 	<?php endforeach; ?>
 	<tr align="center">
-		<th colspan="4">Enregistrés</th>
+		<th colspan="3" class="split">Enregistrés</th>
 	</tr>
 	<?php foreach ($childrenHaveAttendance as $child) : ?>
 		<tr class="haveAttendance">
@@ -42,7 +44,7 @@
 					<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 				</td>
 				<td>
-					<input type="submit" name="submit" value="Enregistrer" class="attendance">
+					<input type="image" src="images/resave.png" name="submit" value="Réctifier" class="attendance">
 				</td>
 			</form>
 		</tr>

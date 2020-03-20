@@ -11,11 +11,12 @@
 
 <body>
 	<?php if ($this->session->get('login')) : ?>
-		<a href="index.php?route=logout">Se déconnecter</a>
+		<a href="index.php?route=logout"><img src="images/logout.png" /></a>
 	<?php endif; ?>
 	<div id="content" class="container-fluid">
 		<?= $content ?>
 	</div>
+	<a href="#"><img src="images/top.png" /></a>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
