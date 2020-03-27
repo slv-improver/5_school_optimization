@@ -50,7 +50,10 @@ class Attendance
 
 	public function getPercent()
 	{
-		return round(array_sum($this->amount) / count($this->amount) * 100, 2);
+		if (!$this->amount) {
+			return 'N/A';
+		}
+		return round(array_sum($this->amount) / count($this->amount) * 100, 2)." %";
 	}
 
 	public function getTable()
