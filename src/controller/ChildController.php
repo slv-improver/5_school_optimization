@@ -118,4 +118,46 @@ class ChildController extends Controller
 			]);
 		}
 	}
+
+	/**
+	 * addDocument save child document
+	 *
+	 * @param  int $childId
+	 * @param  Parameter $post
+	 * @param  array $files
+	 */
+	public function addDocument($childId, Parameter $post, $files)
+	{
+		if ($this->checkLoggedIn()) {
+			if ($childId && $post->get('submit')) {
+				// file uploading
+				if (isset($files['document']) && $files['document']['error'] == 0) {
+					$file = $files['document'];
+					if ($file['size'] <= 1000000) {
+						$fileInfo = pathinfo($file['name']);
+						$extension_upload = $fileInfo['extension'];
+						if (in_array($extension_upload, ['jpg', 'jpeg', 'png', 'pdf'])) {
+							$title = $post->get('title');
+							$fileName = $title . '_' . round(microtime(true) * 1000) . '.' . $extension_upload;
+							move_uploaded_file($file['tmp_name'], 'uploads/' . $fileName);
+							echo "L'envoi a bien été effectué !";
+						} else {
+							echo "Le fichier n'est pas accépté. \n
+							Verifiez l'extension";
+						}
+					} else {
+						echo "Le fichier est trop volumineux";
+					}
+				} else {
+					echo "Une erreur s'est produite lors de l'ajout du document";
+				}
+
+				// insert in db
+				$affectedLines = $this->childDAO->addDocument($fileName, $title, $childId);
+				if ($affectedLines) {
+					header("Location: index.php?route=childCard&childId=$childId");
+				} 
+			}
+		}
+	}
 }
