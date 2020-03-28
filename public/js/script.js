@@ -26,3 +26,10 @@ $('input.attendance').click(function (e) {
 		'text'
 	);
 });
+
+$('a.delete').click(function (e) {
+	if (!confirm('Voulez-vous vraiment supprimer l\'enfant ?' +
+		'\n\n' + 'Cette action est irréversible !')) {
+		e.preventDefault();
+	}
+})
