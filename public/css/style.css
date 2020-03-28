@@ -13,6 +13,10 @@ a[href="#"] {
 	bottom: 15px;
 }
 
+img {
+	max-height: 400px;
+}
+
 .icon {
 	height: 20px;
 }
