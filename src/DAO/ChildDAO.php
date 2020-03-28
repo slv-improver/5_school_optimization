@@ -72,4 +72,18 @@ class ChildDAO extends DAO
 		$result->closeCursor();
 		return $child;
 	}
+	
+	public function addDocument($url, $title, $childId)
+	{
+		$sql = 'INSERT INTO document VALUE (NULL, ?, ?, ?)';
+		$req = $this->createQuery($sql, [$url, $title, $childId]);
+		return $req;
+	}
+
+	public function getDocuments($childId)
+	{
+		$sql = 'SELECT url, title FROM document WHERE child_id = ?';
+		$result = $this->createQuery($sql, [$childId]);
+		return $result->fetchAll();
+	}
 }
