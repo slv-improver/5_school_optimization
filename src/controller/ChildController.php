@@ -71,6 +71,8 @@ class ChildController extends Controller
 			// add attendance key to childArray
 			$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
 
+			$childArray['documents'] = $this->childDAO->getDocuments($childArray['id']);
+
 			$child = new Child($childArray);
 			return $this->view->render('card', [
 				'child' => $child
