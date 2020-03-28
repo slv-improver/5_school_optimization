@@ -11,13 +11,13 @@ $mother = $child->getMother();
 $attendance = $child->getAttendance();
 ?>
 
-<a href="index.php?route=listChildren"><img src="https://img.icons8.com/material-outlined/50/000000/home--v2.png" /></a>
+<a href="index.php?route=listChildren"><img class="icon" src="https://img.icons8.com/material-outlined/50/000000/home--v2.png" /></a>
 <h2 align='center'><?= $lastName ?> <?= $firstName ?></h2>
 <p>
 	né<?= $gender ?> le <?= $birthDate->format('d/m/Y') ?><br>
 	<?= $diff->y ?> ans <?= $diff->m ?> mois <?= $diff->d ?> jours
 </p>
-<p>Pourcentage de présence depuis le <?= $attendance->getDay()[0]->format('d/m/Y') ?> : <?= $attendance->getPercent() ?>%</p>
+<p>Pourcentage de présence depuis le <?= $attendance->getDay()[0]->format('d/m/Y') ?> : <?= $attendance->getPercent() ?></p>
 
 <section class="info">
 	<h2 align='center'>Informations Administratives</h2>
