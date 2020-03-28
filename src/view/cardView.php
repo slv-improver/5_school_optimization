@@ -69,3 +69,22 @@ $attendance = $child->getAttendance();
 		<p><?= $child->getOther() ?></p>
 	</section>
 </section>
+
+<section>
+	<h2 align='center'>Documents</h2>
+	<form action="index.php?route=addDocument&amp;childId=<?= $child->getId() ?>" method="post" enctype="multipart/form-data">
+		<label for="title">Titre du document</label>
+		<input type="text" name="title" id="title" /><br />
+		<input type="file" name="document" /><br />
+		<input type="submit" name="submit" value="Intégrer le document à la fiche de l'enfant" />
+	</form>
+
+	<?php
+	foreach ($child->getDocuments() as $document) :
+	?>
+
+		<h3><?= $document['title'] ?></h3>
+		<p><img src="uploads/<?= $document['url'] ?>" alt="document administratif"></p>
+	<?php endforeach ?>
+
+</section>
