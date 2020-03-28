@@ -10,7 +10,7 @@
 <table>
 	<thead>
 		<tr align="center">
-			<th>N°</th>
+			<th class="no-border"></th>
 			<td><a href="index.php?route=attendance"><img src="images/check.png" /></a></td>
 			<th>Nom</th>
 			<th>Prenom</th>

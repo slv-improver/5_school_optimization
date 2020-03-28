@@ -24,7 +24,7 @@ $attendance = $child->getAttendance();
 
 	<table class="parent">
 		<tr>
-			<th></th>
+			<th class="no-border"></th>
 			<th>NOM</th>
 			<th>Prenom</th>
 			<th>Telephone</th>

@@ -42,7 +42,9 @@ table:not(.parent) {
 tbody tr:nth-child(odd) {
 	background: #5d5c6d38;
 }
-td, th {
+td:not(.no-border),
+th:not(.no-border) {
+	height: 35px;
 	padding: 5px 10px;
 	border: 1px solid #16154491;
 }
