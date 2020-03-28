@@ -54,6 +54,9 @@ class Router
 					case 'attendance':
 						$this->childController->manageAttendance($get->get('childId'), $post);
 						break;
+					case 'addDocument':
+						$this->childController->addDocument($get->get('childId'), $post, $_FILES);
+						break;
 
 					default:
 					// if route value is not defined redirect to error_404.php

@@ -11,12 +11,12 @@
 	<thead>
 		<tr align="center">
 			<th class="no-border"></th>
-			<td><a href="index.php?route=attendance"><img src="images/check.png" /></a></td>
+			<td><a href="index.php?route=attendance"><img class="icon" src="images/check.png" /></a></td>
 			<th>Nom</th>
 			<th>Prenom</th>
 			<th>Date de naissance</th>
 			<th>Age</th>
-			<td><a href="index.php?route=addChild"><img src="images/add.png" /></a></td>
+			<td><a href="index.php?route=addChild"><img class="icon" src="images/add.png" /></a></td>
 		</tr>
 	</thead>
 
@@ -44,10 +44,10 @@
 					?>
 				</td>
 				<td align="center">
-					<a class="delete" href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>"><img src="images/delete.png" /></a>
+					<a class="delete" href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>"><img class="icon" src="images/delete.png" /></a>
 				</td>
 				<td>
-					<a href="index.php?route=childCard&amp;childId=<?= $child->getId() ?>"><img src="images/arrow.png" /><img src="images/document.png" /></a>
+					<a href="index.php?route=childCard&amp;childId=<?= $child->getId() ?>"><img class="icon" src="images/arrow.png" /><img class="icon" src="images/document.png" /></a>
 				</td>
 			</tr>
 		<?php endforeach; ?>

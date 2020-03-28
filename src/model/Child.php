@@ -22,6 +22,7 @@ class Child
 	private $allergies;
 	private $vaccines;
 	private $other;
+	private $documents;
 
 	public function __construct(array $data)
 	{
@@ -144,5 +145,14 @@ class Child
 	public function getOther()
 	{
 		return $this->other;
+	}
+
+	public function setDocuments(array $value)
+	{
+		$this->documents = $value;
+	}
+	public function getDocuments()
+	{
+		return $this->documents;
 	}
 }
