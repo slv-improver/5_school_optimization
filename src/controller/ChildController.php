@@ -6,11 +6,23 @@ use App\config\Parameter;
 use App\src\model\Child;
 
 class ChildController extends Controller
-{
-	public function listChildren()
+{	
+	/**
+	 * listChildren
+	 *
+	 * @param  mixed $currentPage ($_GET['p'])
+	 * @return View [children list, number of pages]
+	 */
+	public function listChildren($currentPage)
 	{
 		if ($this->checkLoggedIn()) {
-			$childrenArray = $this->childDAO->listChildren();
+			$childCount = $this->childDAO->countChildren();
+			$perPage = 10;
+			$pageCount = ceil($childCount / $perPage);
+			if (!isset($currentPage) || !is_numeric($currentPage) || $currentPage > $pageCount) {
+				$currentPage = 1;
+			}
+			$childrenArray = $this->childDAO->listChildren(($currentPage - 1) * $perPage, $perPage);
 			$children = [];
 			foreach ($childrenArray as $childArray) {
 				// add attendance key to childArray
@@ -19,7 +31,8 @@ class ChildController extends Controller
 				$children[] = $child;
 			}
 			return $this->view->render('home', [
-				'children' => $children
+				'children' => $children,
+				'numberOfPages' => $pageCount
 			]);
 		}
 	}
@@ -107,7 +120,7 @@ class ChildController extends Controller
 					exit;
 				}
 			}
-			$childrenArray = $this->childDAO->listChildren();
+			$childrenArray = $this->childDAO->listChildren(0);
 			$children = [];
 			$childrenHaveAttendance = [];
 			foreach ($childrenArray as $childArray) {
