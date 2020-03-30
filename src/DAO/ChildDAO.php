@@ -11,14 +11,27 @@ class ChildDAO extends DAO
 	 *
 	 * @return array $children
 	 */
-	public function listChildren()
+	public function listChildren($from, $max = null)
 	{
-		$sql = 'SELECT id, last_name lastName, first_name firstName, birth_date birthDate
-			FROM child ORDER BY birth_date ASC';
+		if (!isset($max)) {
+			$max = $this->countChildren();
+		}
+		$sql = "SELECT id, last_name lastName, first_name firstName, birth_date birthDate
+			FROM child ORDER BY birth_date ASC LIMIT $from, $max";
 		$result = $this->createQuery($sql);
 		$children = $result->fetchAll();
 		$result->closeCursor();
 		return $children;
+	}
+		
+	/**
+	 * countChildren
+	 *
+	 * @return int number of children
+	 */
+	public function countChildren()
+	{
+		return (int) $this->createQuery('SELECT COUNT(id) FROM child')->fetch()[0];
 	}
 
 	/**
@@ -34,16 +47,16 @@ class ChildDAO extends DAO
 			VALUES (:gender, :last_name, :first_name, :birth_date,
 				:father_id, :mother_id, :address, :allergies, :vaccines, :other)';
 		$req = $this->createQuery($sql, [
-			":gender"=> $post->get('gender'),
-			":last_name"=> $post->get('last_name'),
-			":first_name"=> $post->get('first_name'),
-			":birth_date"=> $post->get('birth_date'),
-			":father_id"=> $fatherId,
-			":mother_id"=> $motherId,
-			":address"=> $post->get('address'),
-			":allergies"=> $post->get('allergies'),
-			":vaccines"=> $post->get('vaccines'),
-			":other"=> $post->get('other'),
+			":gender" => $post->get('gender'),
+			":last_name" => $post->get('last_name'),
+			":first_name" => $post->get('first_name'),
+			":birth_date" => $post->get('birth_date'),
+			":father_id" => $fatherId,
+			":mother_id" => $motherId,
+			":address" => $post->get('address'),
+			":allergies" => $post->get('allergies'),
+			":vaccines" => $post->get('vaccines'),
+			":other" => $post->get('other'),
 
 		]);
 
@@ -70,12 +83,12 @@ class ChildDAO extends DAO
 		$sql = 'DELETE FROM child WHERE id = ?';
 		$req = $this->createQuery($sql, [$childId]);
 		$this->createQuery("ALTER TABLE `attendance` DROP `child$childId`");
-		
+
 		// delete parents
 
 		return $req;
 	}
-	
+
 	/**
 	 * childCard select all information from child by id
 	 *
@@ -91,7 +104,7 @@ class ChildDAO extends DAO
 		$result->closeCursor();
 		return $child;
 	}
-	
+
 	public function addDocument($url, $title, $childId)
 	{
 		$sql = 'INSERT INTO document VALUE (NULL, ?, ?, ?)';
