@@ -25,6 +25,10 @@ img {
 	margin: 30px;
 }
 
+.pagination {
+	text-align: center;
+}
+
 .icon {
 	height: 20px;
 }
