@@ -27,19 +27,28 @@ class ChildDAO extends DAO
 	 * @param  Parameter $post
 	 * @return int count of affected lines
 	 */
-	public function addChild(Parameter $post)
+	public function addChild(Parameter $post, $fatherId, $motherId)
 	{
-		$sql = 'INSERT INTO child (gender, last_name, first_name, birth_date, allergies, vaccines, other) 
-			VALUES (?, ?, ?, ?, "", "", "")';
+		$sql = 'INSERT INTO child (gender, last_name, first_name, birth_date,
+				father_id, mother_id, address, allergies, vaccines, other) 
+			VALUES (:gender, :last_name, :first_name, :birth_date,
+				:father_id, :mother_id, :address, :allergies, :vaccines, :other)';
 		$req = $this->createQuery($sql, [
-			$post->get('gender'),
-			$post->get('last_name'),
-			$post->get('first_name'),
-			$post->get('birth_date')
+			":gender"=> $post->get('gender'),
+			":last_name"=> $post->get('last_name'),
+			":first_name"=> $post->get('first_name'),
+			":birth_date"=> $post->get('birth_date'),
+			":father_id"=> $fatherId,
+			":mother_id"=> $motherId,
+			":address"=> $post->get('address'),
+			":allergies"=> $post->get('allergies'),
+			":vaccines"=> $post->get('vaccines'),
+			":other"=> $post->get('other'),
+
 		]);
 
-		$id = $this->createQuery('SELECT LAST_INSERT_ID()')->fetch()[0];
-		$this->createQuery("ALTER TABLE `attendance` ADD `child$id` DECIMAL (2,1) NOT NULL DEFAULT '-1'");
+		$childId = $this->createQuery('SELECT LAST_INSERT_ID()')->fetch()[0];
+		$this->createQuery("ALTER TABLE `attendance` ADD `child$childId` DECIMAL (2,1) NOT NULL DEFAULT '-1'");
 		return $req;
 	}
 
