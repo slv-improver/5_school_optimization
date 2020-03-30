@@ -2,8 +2,36 @@
 
 namespace App\src\DAO;
 
+use App\config\Parameter;
+
 class ResponsableDAO extends DAO
 {
+	public function addFather(Parameter $post)
+	{
+		$sql = 'INSERT INTO responsable (last_name, first_name, phone, mail, `rank`)
+				VALUES (?, ?, ?, ?, "father")';
+		$this->createQuery($sql, [
+			$post->get('f_last_name'),
+			$post->get('f_first_name'),
+			$post->get('f_phone'),
+			$post->get('f_mail'),
+		]);
+		return $this->createQuery('SELECT LAST_INSERT_ID()')->fetch()[0];
+	}
+
+	public function addMother(Parameter $post)
+	{
+		$sql = 'INSERT INTO responsable (last_name, first_name, phone, mail, `rank`)
+				VALUES (?, ?, ?, ?, "mother")';
+		$this->createQuery($sql, [
+			$post->get('m_last_name'),
+			$post->get('m_first_name'),
+			$post->get('m_phone'),
+			$post->get('m_mail'),
+		]);
+		return $this->createQuery('SELECT LAST_INSERT_ID()')->fetch()[0];
+	}
+
 	/**
 	 * getParents of child 
 	 *
