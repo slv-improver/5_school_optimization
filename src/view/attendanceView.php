@@ -1,6 +1,6 @@
 <?php $title = 'Enregistrement des présences'; ?>
 
-<a href="?route=listChildren"><img src="https://img.icons8.com/material-outlined/50/000000/home--v2.png" /></a>
+<a href="?route=listChildren"><img class="icon" src="https://img.icons8.com/material-outlined/50/000000/home--v2.png" /></a>
 
 <p>Enregistrez les absences/présences des enfants</p>
 
@@ -24,7 +24,7 @@
 					<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 				</td>
 				<td>
-					<input type="image" src="images/checkmark.png" name="submit" value="Enregistrer" class="attendance">
+					<input type="image" src="images/checkmark.png" name="submit" value="Enregistrer" class="attendance icon">
 				</td>
 			</form>
 		</tr>
@@ -44,7 +44,7 @@
 					<label for="val1_<?= $child->getId() ?>" class="intd">Présent<input type="radio" name="attendanceAmount" value="1" id="val1_<?= $child->getId() ?>"></label>
 				</td>
 				<td>
-					<input type="image" src="images/resave.png" name="submit" value="Réctifier" class="attendance">
+					<input type="image" src="images/resave.png" name="submit" value="Réctifier" class="attendance icon">
 				</td>
 			</form>
 		</tr>
