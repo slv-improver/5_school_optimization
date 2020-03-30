@@ -7,6 +7,18 @@
 	<?= $this->session->show('delete_child') ?>
 </p>
 
+<p class="pagination">
+	<?php for ($i = 1; $i <= $numberOfPages; $i++) :
+		$separator = $i < $numberOfPages ? '&nbsp;-&nbsp;' : ' ';
+		if ($i == $currentPage) :
+	?>
+			<span class="currentPage"><?= $i ?></span><?= $separator ?>
+		<?php else : ?>
+			<a href="index.php?route=listChildren&amp;p=<?= $i ?>"><?= $i ?></a><?= $separator ?>
+		<?php endif ?>
+	<?php endfor ?>
+</p>
+
 <table>
 	<thead>
 		<tr align="center">

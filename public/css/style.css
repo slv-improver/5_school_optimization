@@ -7,6 +7,7 @@ a[href$="logout"] {
 	right: 15px;
 	top: 15px;
 }
+
 a[href="#"] {
 	position: fixed;
 	right: 15px;
@@ -23,6 +24,21 @@ img {
 
 .margin {
 	margin: 30px;
+}
+
+.pagination {
+	text-align: center;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+
+}
+
+.currentPage {
+	font-weight: bold;
+	background: rgba(100, 148, 237, 0.658);
+	padding: 0 10px;
+	border-radius: 50%;
 }
 
 .icon {
@@ -51,9 +67,11 @@ input {
 table:not(.parent) {
 	margin: auto;
 }
+
 tbody tr:nth-child(odd) {
 	background: #5d5c6d38;
 }
+
 td:not(.no-border),
 th:not(.no-border) {
 	height: 35px;

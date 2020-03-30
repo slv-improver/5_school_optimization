@@ -40,7 +40,7 @@ class Router
 						$this->userController->logout();
 						break;
 					case 'listChildren':
-						$this->childController->listChildren();
+						$this->childController->listChildren($get->get('p'));
 						break;
 					case 'addChild':
 						$this->childController->addChild($post);
