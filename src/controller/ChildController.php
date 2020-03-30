@@ -32,7 +32,8 @@ class ChildController extends Controller
 			}
 			return $this->view->render('home', [
 				'children' => $children,
-				'numberOfPages' => $pageCount
+				'numberOfPages' => $pageCount,
+				'currentPage' => $currentPage
 			]);
 		}
 	}
