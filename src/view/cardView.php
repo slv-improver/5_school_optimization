@@ -17,7 +17,11 @@ $attendance = $child->getAttendance();
 	né<?= $gender ?> le <?= $birthDate->format('d/m/Y') ?><br>
 	<?= $diff->y ?> ans <?= $diff->m ?> mois <?= $diff->d ?> jours
 </p>
-<p>Pourcentage de présence depuis le <?= $attendance->getDay()[0]->format('d/m/Y') ?> : <?= $attendance->getPercent() ?></p>
+<p>
+	Pourcentage de présence depuis le 
+	<?= isset($attendance->getDay()[0]) ? $attendance->getDay()[0]->format('d/m/Y') : '' ?> : 
+	<?= $attendance->getPercent() ?>
+</p>
 
 <section class="info">
 	<h2 align='center'>Informations Administratives</h2>
