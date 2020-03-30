@@ -22,22 +22,31 @@ img {
 	display: flex;
 }
 
+.center {
+	text-align: center;
+}
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
+
 .margin {
 	margin: 30px;
 }
 
-.pagination {
+.pagin {
 	text-align: center;
 	padding: 10px;
-	display: flex;
-	justify-content: center;
-
+}
+.pagin * {
+	padding: 0 7px;
 }
 
 .currentPage {
 	font-weight: bold;
 	background: rgba(100, 148, 237, 0.658);
-	padding: 0 10px;
 	border-radius: 50%;
 }
 

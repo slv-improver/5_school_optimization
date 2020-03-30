@@ -12,7 +12,7 @@ $attendance = $child->getAttendance();
 ?>
 
 <a href="index.php?route=listChildren"><img class="icon" src="https://img.icons8.com/material-outlined/50/000000/home--v2.png" /></a>
-<h2 align='center'><?= $lastName ?> <?= $firstName ?></h2>
+<h2 class='center'><?= $lastName ?> <?= $firstName ?></h2>
 <p>
 	né<?= $gender ?> le <?= $birthDate->format('d/m/Y') ?><br>
 	<?= $diff->y ?> ans <?= $diff->m ?> mois <?= $diff->d ?> jours
@@ -24,7 +24,7 @@ $attendance = $child->getAttendance();
 </p>
 
 <section class="info">
-	<h2 align='center'>Informations Administratives</h2>
+	<h2 class='center'>Informations Administratives</h2>
 
 	<table class="parent">
 		<tr>
@@ -54,12 +54,6 @@ $attendance = $child->getAttendance();
 		</tr>
 	</table>
 
-	<!-- <h3>Personnes autorisees a recuperer l'enfant</h3>
-
-	<p>Nom : </p>
-	<p>Prenom : </p>
-	<p>N° CIN : </p> -->
-
 	<h3>Medical</h3>
 
 	<section>
@@ -75,7 +69,7 @@ $attendance = $child->getAttendance();
 </section>
 
 <section>
-	<h2 align='center'>Documents</h2>
+	<h2 class='center'>Documents</h2>
 	<form action="index.php?route=addDocument&amp;childId=<?= $child->getId() ?>" method="post" enctype="multipart/form-data">
 		<label for="title">Titre du document</label>
 		<input type="text" name="title" id="title" /><br />

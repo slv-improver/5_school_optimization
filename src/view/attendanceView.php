@@ -29,7 +29,7 @@
 			</form>
 		</tr>
 	<?php endforeach; ?>
-	<tr align="center">
+	<tr class="center">
 		<th colspan="3" class="split">Enregistrés</th>
 	</tr>
 	<?php foreach ($childrenHaveAttendance as $child) : ?>

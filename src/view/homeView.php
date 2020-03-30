@@ -7,7 +7,7 @@
 	<?= $this->session->show('delete_child') ?>
 </p>
 
-<p class="pagination">
+<p class="pagin">
 	<?php for ($i = 1; $i <= $numberOfPages; $i++) :
 		$separator = $i < $numberOfPages ? '&nbsp;-&nbsp;' : ' ';
 		if ($i == $currentPage) :
@@ -21,7 +21,7 @@
 
 <table>
 	<thead>
-		<tr align="center">
+		<tr class="center">
 			<th class="no-border"></th>
 			<td><a href="index.php?route=attendance"><img class="icon" src="images/check.png" /></a></td>
 			<th>Nom</th>
@@ -55,7 +55,7 @@
 					echo "$diff->y ans $diff->m mois $diff->d jours";
 					?>
 				</td>
-				<td align="center">
+				<td class="center">
 					<a class="delete" href="index.php?route=deleteChild&amp;childId=<?= $child->getId() ?>"><img class="icon" src="images/delete.png" /></a>
 				</td>
 				<td>
