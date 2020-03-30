@@ -53,3 +53,10 @@
 		<?php endforeach; ?>
 	</tbody>
 </table>
+<div class="pagination">
+	<?php for ($i = 1; $i <= $numberOfPages; $i++) :
+		$separator = $i < $numberOfPages ? '&nbsp;-&nbsp;' : ' ';
+	?>
+		<a href="index.php?route=listChildren&amp;p=<?= $i ?>"><?= $i ?></a><?= $separator ?>
+	<?php endfor ?>
+</div>
