@@ -60,9 +60,19 @@ class ChildDAO extends DAO
 	 */
 	public function deleteChild($childId)
 	{
+		$this->createQuery(
+			'DELETE FROM responsable WHERE id = 
+				(SELECT father_id FROM child WHERE id = :childId)
+				|| id =
+				(SELECT mother_id FROM child WHERE id = :childId)',
+			[':childId' => $childId]
+		);
 		$sql = 'DELETE FROM child WHERE id = ?';
 		$req = $this->createQuery($sql, [$childId]);
 		$this->createQuery("ALTER TABLE `attendance` DROP `child$childId`");
+		
+		// delete parents
+
 		return $req;
 	}
 	
