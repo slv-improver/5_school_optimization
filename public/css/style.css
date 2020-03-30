@@ -17,6 +17,14 @@ img {
 	max-height: 400px;
 }
 
+.flex {
+	display: flex;
+}
+
+.margin {
+	margin: 30px;
+}
+
 .icon {
 	height: 20px;
 }

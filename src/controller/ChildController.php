@@ -28,7 +28,14 @@ class ChildController extends Controller
 	{
 		if ($this->checkLoggedIn()) {
 			if ($post->get('submit')) {
-				$this->childDAO->addChild($post);
+				// $this->responsableDAO->checkResponsable($post, 'father');
+				if (!empty($post->get('f_last_name'))) {
+					$fatherId = $this->responsableDAO->addFather($post);
+				}
+				if (!empty($post->get('m_last_name'))) {
+					$motherId = $this->responsableDAO->addMother($post);
+				}
+				$this->childDAO->addChild($post, $fatherId, $motherId);
 				$this->session->set('add_child', 'Le nouvel enfant a bien été ajouté');
 				header('Location: index.php?route=listChildren');
 				exit;
@@ -70,9 +77,8 @@ class ChildController extends Controller
 
 			// add attendance key to childArray
 			$childArray['attendance'] = $this->attendanceDAO->getAttendanceChild($childArray['id']);
-
 			$childArray['documents'] = $this->childDAO->getDocuments($childArray['id']);
-
+			
 			$child = new Child($childArray);
 			return $this->view->render('card', [
 				'child' => $child
